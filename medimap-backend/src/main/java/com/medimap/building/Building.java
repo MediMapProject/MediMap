@@ -1,4 +1,6 @@
 package com.medimap.building;
 
-public class Building {
+public class Building
+{
+
 }
