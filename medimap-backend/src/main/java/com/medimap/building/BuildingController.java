@@ -12,5 +12,7 @@ public class BuildingController
     public BuildingController(BuildingService buildingService) {this.buildingService = buildingService;}
 
     @GetMapping
-    public List<Building> getAllBuildings() {return buildingService.getAllBuildings();}
+    public List<BuildingDTO> getAllBuildings() {
+        return buildingService.getAllBuildings();
+    }
 }

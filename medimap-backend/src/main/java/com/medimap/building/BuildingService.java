@@ -9,5 +9,21 @@ public class BuildingService
 
     public BuildingService(BuildingRepository buildingRepository) {this.buildingRepository = buildingRepository;}
 
-    public List<Building> getAllBuildings() {return buildingRepository.findAll();}
+    public List<BuildingDTO> getAllBuildings() {
+        return buildingRepository.findAll()
+                .stream()
+                .map(this::getBuildingDTO)
+                .toList();
+    }
+
+    private BuildingDTO getBuildingDTO(Building building)
+    {
+        return new BuildingDTO(
+                building.getId(),
+                building.getName(),
+                building.getDescription(),
+                building.getHospital().getId(),
+                building.getHospital().getName()
+        );
+    }
 }

@@ -2,6 +2,7 @@ package com.medimap.hospital;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.medimap.building.Building;
 import jakarta.persistence.*;
 
@@ -26,6 +27,7 @@ public class Hospital
     
     public Hospital() {}
 
+    @JsonIgnore
     @OneToMany(mappedBy = "hospital")
     private List<Building> buildings=new ArrayList<>();
 
