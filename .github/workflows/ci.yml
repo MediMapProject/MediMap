@@ -1,0 +1,54 @@
+name: MediMap CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  backend:
+    name: Backend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Build backend
+        working-directory: medimap-backend
+        run: mvn clean test
+
+
+  frontend:
+    name: Frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: medimap-frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: medimap-frontend
+        run: npm ci
+
+      - name: Build frontend
+        working-directory: medimap-frontend
+        run: npm run build
