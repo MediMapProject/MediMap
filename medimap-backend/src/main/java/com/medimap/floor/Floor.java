@@ -1,4 +1,46 @@
 package com.medimap.floor;
 
-public class Floor {
+import com.medimap.building.Building;
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "floor")
+public class Floor
+{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "building_id", nullable = false)
+    private Building building;
+
+    @Column(nullable = false)
+    private int floorNumber;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private String mapPath;
+
+    public Floor() {}
+
+    public Long getId() {return id;}
+
+    public Building getBuilding() {return building;}
+
+    public int getFloorNumber() {return floorNumber;}
+
+    public String getName() {return name;}
+
+    public String getMapPath() {return mapPath;}
+
+    public void setBuilding(Building building) {this.building = building;}
+
+    public void setFloorNumber(int floorNumber) {this.floorNumber = floorNumber;}
+
+    public void setName(String name) {this.name = name;}
+
+    public void setMapPath(String mapPath) {this.mapPath = mapPath;}
 }
