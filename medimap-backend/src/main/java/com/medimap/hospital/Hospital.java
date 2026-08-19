@@ -1,5 +1,8 @@
 package com.medimap.hospital;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.medimap.building.Building;
 import jakarta.persistence.*;
 
 @Entity
@@ -22,6 +25,9 @@ public class Hospital
     private String email;
     
     public Hospital() {}
+
+    @OneToMany(mappedBy = "hospital")
+    private List<Building> buildings=new ArrayList<>();
 
     public Long getId()
     {
@@ -68,6 +74,15 @@ public class Hospital
     public void setEmail(String email)
     {
         this.email = email;
+    }
+
+    public List<Building> getBuildings()
+    {
+        return buildings;
+    }
+    public void setBuildings(List<Building> buildings)
+    {
+        this.buildings = buildings;
     }
 
 }
