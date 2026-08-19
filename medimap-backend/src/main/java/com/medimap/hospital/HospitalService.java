@@ -11,8 +11,23 @@ public class HospitalService
         this.hospitalRepository = hospitalRepository;
     }
 
-    public List<Hospital> getAllHospitals()
+    public List<HospitalDTO> getAllHospitals()
     {
-        return hospitalRepository.findAll();
+        return hospitalRepository.findAll()
+                .stream()
+                .map(this::buildHospitalDTO)
+                .toList();
+    }
+
+    private HospitalDTO buildHospitalDTO(Hospital hospital)
+    {
+        return new HospitalDTO(
+                hospital.getId(),
+                hospital.getName(),
+                hospital.getAddress(),
+                hospital.getCity(),
+                hospital.getPhone(),
+                hospital.getEmail()
+        );
     }
 }

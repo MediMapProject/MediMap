@@ -15,7 +15,7 @@ public class HospitalController
      }
 
      @GetMapping
-     public List<Hospital> getAllHospitals()
+     public List<HospitalDTO> getAllHospitals()
      {
          return hospitalService.getAllHospitals();
      }

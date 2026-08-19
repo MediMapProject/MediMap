@@ -6,5 +6,4 @@ public record BuildingDTO(
         String description,
         Long hospitalId,
         String hospitalName
-) {
-}
+) {}
