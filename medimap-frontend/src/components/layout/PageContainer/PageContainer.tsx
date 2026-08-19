@@ -1,13 +1,30 @@
 import type { ReactNode } from "react";
 
-interface Props {
+import Header from "../Header";
+import Sidebar from "../Sidebar";
+
+import "./PageContainer.css";
+
+interface PageContainerProps {
     children: ReactNode;
 }
 
-export default function PageContainer({ children }: Props) {
+export default function PageContainer({
+    children,
+}: PageContainerProps) {
     return (
-        <main>
-            {children}
-        </main>
+        <>
+            <Header />
+
+            <div className="layout">
+
+                <Sidebar />
+
+                <main className="layout__content">
+                    {children}
+                </main>
+
+            </div>
+        </>
     );
 }

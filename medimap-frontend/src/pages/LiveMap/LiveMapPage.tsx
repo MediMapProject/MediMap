@@ -1,19 +1,12 @@
-import Header from "../../components/layout/Header";
-import Sidebar from "../../components/layout/Sidebar";
 import PageContainer from "../../components/layout/PageContainer";
+import MapViewer from "../../components/map/MapViewer";
 
 export default function LiveMapPage() {
     return (
-        <>
-            <Header />
+        <PageContainer>
 
-            <Sidebar />
+            <MapViewer />
 
-            <PageContainer>
-
-                <h1>Live Map</h1>
-
-            </PageContainer>
-        </>
+        </PageContainer>
     );
 }
