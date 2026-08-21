@@ -1,4 +1,13 @@
 package com.medimap.room;
 
-public class RoomDTO {
-}
+public record RoomDTO(
+        Long id,
+        Long floorId,
+        String floorName,
+        Long departmentId,
+        String departmentName,
+        String number,
+        String name,
+        String description,
+        String svgElementId
+) {}
