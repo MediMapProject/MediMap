@@ -42,3 +42,32 @@ img{
     max-width:100%;
 
 }
+
+/* Mobile First */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    margin: 0;
+}
+
+/* Tablet */
+
+@media (min-width: 768px) {
+
+}
+
+/* Desktop */
+
+@media (min-width: 1024px) {
+
+}
