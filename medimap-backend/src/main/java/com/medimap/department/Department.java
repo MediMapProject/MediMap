@@ -9,4 +9,10 @@ public class Department
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long departmentId;
+
+    @Column(nullable = false)
+    private String name;
+
+    public Long getId() {return departmentId;}
+    public String getName() {return name;}
 }

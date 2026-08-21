@@ -3,9 +3,9 @@ package com.medimap.doctor;
 public record DoctorDTO(
     Long id,
     Long departmentId,
-    Long departmentName,
+    String departmentName,
     Long floorId,
-    Long floorName,
+    String floorName,
     String firstName,
     String lastName,
     String title,
