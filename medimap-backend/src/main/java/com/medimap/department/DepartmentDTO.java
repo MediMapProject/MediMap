@@ -1,4 +1,9 @@
 package com.medimap.department;
 
-public class DepartmentDTO {
-}
+public record DepartmentDTO(
+        Long id,
+        Long hospitalId,
+        String hospitalName,
+        String name,
+        String description
+) {}
