@@ -1,32 +1,40 @@
-import "./Header.css";
+import "../Header.css";
 
 export default function Header() {
     return (
         <header className="header">
 
-            <div className="header__left">
+            <div className="header__logo">
 
-                <h1 className="header__logo">
+                <span className="header__logo-icon">
+                    🏥
+                </span>
+
+                <span className="header__logo-text">
                     MediMap
-                </h1>
+                </span>
 
             </div>
 
-            <div className="header__center">
+            <div className="header__actions">
 
-                <input
-                    className="header__search"
-                    type="text"
-                    placeholder="Search doctor, department or room..."
-                />
+                <button className="header__action">
 
-            </div>
+                    🌐
 
-            <div className="header__right">
+                </button>
 
-                <button>RO</button>
+                <button className="header__action">
 
-                <button>🌙</button>
+                    🌙
+
+                </button>
+
+                <button className="header__action">
+
+                    ☰
+
+                </button>
 
             </div>
 
