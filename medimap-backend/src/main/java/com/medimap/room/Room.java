@@ -1,4 +1,12 @@
 package com.medimap.room;
 
-public class Room {
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "room")
+public class Room
+{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long roomId;
 }

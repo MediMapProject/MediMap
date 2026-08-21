@@ -1,4 +1,12 @@
 package com.medimap.department;
 
-public class Department {
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "department")
+public class Department
+{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long departmentId;
 }
