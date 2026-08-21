@@ -1,11 +1,11 @@
 import PageContainer from "../../components/layout/PageContainer";
-import MapViewer from "../../components/map/MapViewer";
+import SearchBar from "../../components/search/SearchBar";
 
 export default function LiveMapPage() {
     return (
         <PageContainer>
 
-            <MapViewer />
+            <SearchBar />
 
         </PageContainer>
     );
