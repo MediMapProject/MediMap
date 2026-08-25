@@ -1,0 +1,18 @@
+import api from "./client";
+import type { Doctor } from "../types/Doctor";
+
+export async function getDoctorsByRoom(
+    roomId: number
+): Promise<Doctor[]> {
+
+    const response = await api.get<Doctor[]>(
+        "/doctors/by-room",
+        {
+            params: {
+                roomId,
+            },
+        }
+    );
+
+    return response.data;
+}
