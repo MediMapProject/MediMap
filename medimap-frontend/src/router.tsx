@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import LiveMapPage from "./pages/LiveMap";
-import DoctorsPage from "./pages/Doctors/DoctorsPage";
+import DoctorsPage from "./pages/Doctors";
 import DepartmentsPage from "./pages/Departments/DepartmentsPage";
 import AboutPage from "./pages/About/AboutPage";
 import SettingsPage from "./pages/Settings/SettingsPage";
