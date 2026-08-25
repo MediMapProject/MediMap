@@ -8,6 +8,9 @@ import com.medimap.room.RoomRepository;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class SearchService {
     private final DoctorRepository doctorRepository;
@@ -22,5 +25,10 @@ public class SearchService {
         this.roomRepository = roomRepository;
         this.buildingRepository = buildingRepository;
         this.hospitalRepository = hospitalRepository;
+    }
+
+    public List<SearchDTO> search(String query) {
+        List<SearchDTO> results = new ArrayList<>();
+        return results;
     }
 }
