@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
-import LiveMapPage from "./pages/LiveMap";
+import MapPage from "./pages/Map";
 import DoctorsPage from "./pages/Doctors";
 import DepartmentsPage from "./pages/Departments/DepartmentsPage";
 import AboutPage from "./pages/About/AboutPage";
@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
     },
     {
         path: "/map",
-        element: <LiveMapPage />
+        element: <MapPage />
     },
     {
         path: "/doctors",
