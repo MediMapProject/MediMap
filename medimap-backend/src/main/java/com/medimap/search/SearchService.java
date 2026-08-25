@@ -1,10 +1,10 @@
 package com.medimap.search;
 
-import com.medimap.building.BuildingRepository;
-import com.medimap.department.DepartmentRepository;
-import com.medimap.doctor.DoctorRepository;
-import com.medimap.hospital.HospitalRepository;
-import com.medimap.room.RoomRepository;
+import com.medimap.building.*;
+import com.medimap.department.*;
+import com.medimap.doctor.*;
+import com.medimap.hospital.*;
+import com.medimap.room.*;
 
 import org.springframework.stereotype.Service;
 
@@ -27,8 +27,51 @@ public class SearchService {
         this.hospitalRepository = hospitalRepository;
     }
 
-    public List<SearchDTO> search(String query) {
+    public List<SearchDTO> search(String query)
+    {
+        if (query == null || query.isBlank()) {
+            return List.of();
+        }
+
+        query = query.trim();
+
         List<SearchDTO> results = new ArrayList<>();
+
+        List<Doctor> doctors = doctorRepository.findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(query, query);
+
+        for (Doctor doctor : doctors)
+        {
+            results.add(SearchMapper.doctorToSearchDTO(doctor));
+        }
+
+        List<Department> departments = departmentRepository.findByNameContainingIgnoreCase(query);
+
+        for(Department department : departments)
+        {
+            results.add(SearchMapper.departmentToSearchDTO(department));
+        }
+
+        List<Room> rooms = roomRepository.findByNumberContainingIgnoreCaseOrNameContainingIgnoreCase(query, query);
+
+        for(Room room : rooms)
+        {
+            results.add(SearchMapper.roomToSearchDTO(room));
+        }
+
+        List<Hospital> hospitals = hospitalRepository.findByNameContainingIgnoreCase(query);
+
+        for(Hospital hospital : hospitals)
+        {
+            results.add(SearchMapper.hospitalToSearchDTO(hospital));
+        }
+
+        List<Building> buildings = buildingRepository.findByNameContainingIgnoreCase(query);
+
+        for(Building building : buildings)
+        {
+            results.add(SearchMapper.buildingToSearchDTO(building));
+        }
+
         return results;
     }
 }
