@@ -30,4 +30,12 @@ public class FloorService
                floor.getBuilding().getName()
        );
     }
+
+    public List<FloorDTO> getFloorsByBuildingId(Long buildingId)
+    {
+        return floorRepository.findByBuildingId(buildingId)
+                .stream()
+                .map(this::getFloorDTO)
+                .toList();
+    }
 }

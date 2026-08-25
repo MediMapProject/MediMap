@@ -15,4 +15,9 @@ public class BuildingController
     public List<BuildingDTO> getAllBuildings() {
         return buildingService.getAllBuildings();
     }
+
+    @GetMapping("/by-hospital")
+    public List<BuildingDTO> getBuildingsByHospitalId(@RequestParam Long hospitalId) {
+        return buildingService.getBuildingsByHospitalId(hospitalId);
+    }
 }

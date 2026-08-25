@@ -16,4 +16,10 @@ public class FloorController
     public List<FloorDTO> getAllFloors() {
         return floorService.getAllFloors();
     }
+
+    @GetMapping("/by-building")
+    public List<FloorDTO> getFloorsByBuildingId(@RequestParam Long buildingId)
+    {
+        return floorService.getFloorsByBuildingId(buildingId);
+    }
 }

@@ -15,4 +15,9 @@ public class DoctorController
     public List<DoctorDTO> getAllDoctors() {
         return doctorService.getAllDoctors();
     }
+
+    @GetMapping("/by-room")
+    public List<DoctorDTO> getDoctorsByRoomId(@RequestParam Long roomId) {
+        return doctorService.getDoctorsByRoomId(roomId);
+    }
 }

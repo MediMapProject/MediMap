@@ -9,4 +9,6 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
             String firstName,
             String lastName
     );
+
+    List<Doctor> findByRoomId(Long roomId);
 }

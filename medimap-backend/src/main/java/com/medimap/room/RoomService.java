@@ -33,4 +33,11 @@ public class RoomService {
                 room.getSvgElementId()
         );
     }
+
+    public List<RoomDTO> getRoomsByFloorId(Long floorId) {
+        return roomRepository.findByFloorId(floorId)
+                .stream()
+                .map(this::getRoomDTO)
+                .toList();
+    }
 }

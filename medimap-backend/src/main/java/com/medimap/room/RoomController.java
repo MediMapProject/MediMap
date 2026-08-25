@@ -16,4 +16,9 @@ public class RoomController {
     public List<RoomDTO> getAllRooms() {
         return roomService.getAllRooms();
     }
+
+    @GetMapping("/by-floor")
+    public List<RoomDTO> getRoomsByFloorId(@RequestParam Long floorId) {
+        return roomService.getRoomsByFloorId(floorId);
+    }
 }

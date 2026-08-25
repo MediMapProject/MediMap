@@ -26,4 +26,11 @@ public class BuildingService
                 building.getHospital().getName()
         );
     }
+
+    public List<BuildingDTO> getBuildingsByHospitalId(Long hospitalId) {
+        return buildingRepository.findByHospitalId(hospitalId)
+                .stream()
+                .map(this::getBuildingDTO)
+                .toList();
+    }
 }

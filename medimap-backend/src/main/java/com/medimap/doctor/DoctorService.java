@@ -31,4 +31,11 @@ public class DoctorService {
                 doctor.getPhone()
         );
     }
+
+    public List<DoctorDTO> getDoctorsByRoomId(Long roomId) {
+        return doctorRepository.findByRoomId(roomId)
+                .stream()
+                .map(this::getDoctorDTO)
+                .toList();
+    }
 }

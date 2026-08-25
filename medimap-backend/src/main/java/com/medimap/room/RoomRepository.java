@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface RoomRepository extends JpaRepository<Room, Long> {
     List<Room> findByNumberContainingIgnoreCaseOrNameContainingIgnoreCase(String number, String name);
+    List<Room> findByFloorId(Long floorId);
 }
