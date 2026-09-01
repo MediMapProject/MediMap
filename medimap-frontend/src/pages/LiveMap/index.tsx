@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import "./index.css";
 
 import HospitalSelector from "./components/HospitalSelector/HospitalSelector";
@@ -6,8 +8,23 @@ import FloorSelector from "./components/FloorSelector/FloorSelector";
 import SearchBar from "./components/SearchBar/SearchBar";
 import MapViewer from "./components/MapViewer/MapViewer";
 import RoomPopup from "./components/RoomPopup/RoomPopup";
+import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
+
+import { useHospitals } from "./hooks/useHospitals";
 
 export default function LiveMap() {
+    const { hospitals, loading, error } = useHospitals();
+
+    const [selectedHospitalId, setSelectedHospitalId] = useState<number | null>(null);
+
+    if (loading) {
+        return <LoadingSpinner />;
+    }
+
+    if (error) {
+        return <p>{error}</p>;
+    }
+
     return (
         <main className="live-map-page">
             <header className="top-bar">
@@ -15,8 +32,14 @@ export default function LiveMap() {
             </header>
 
             <section className="selectors">
-                <HospitalSelector />
+                <HospitalSelector
+                    hospitals={hospitals}
+                    value={selectedHospitalId}
+                    onChange={setSelectedHospitalId}
+                />
+
                 <BuildingSelector />
+
                 <FloorSelector />
             </section>
 
