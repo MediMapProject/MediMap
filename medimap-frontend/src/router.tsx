@@ -10,30 +10,30 @@ import NotFoundPage from "./pages/NotFound/NotFoundPage";
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <Navigate to="/map" replace />
+        element: <Navigate to="/map" replace />,
     },
     {
         path: "/map",
-        element: <MapPage />
+        element: <MapPage />,
     },
     {
         path: "/doctors",
-        element: <DoctorsPage />
+        element: <DoctorsPage />,
     },
     {
         path: "/departments",
-        element: <DepartmentsPage />
+        element: <DepartmentsPage />,
     },
     {
         path: "/about",
-        element: <AboutPage />
+        element: <AboutPage />,
     },
     {
         path: "/settings",
-        element: <SettingsPage />
+        element: <SettingsPage />,
     },
     {
         path: "*",
-        element: <NotFoundPage />
-    }
+        element: <NotFoundPage />,
+    },
 ]);

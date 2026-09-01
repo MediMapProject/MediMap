@@ -9,20 +9,26 @@ export function useHospitals() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        async function loadHospitals() {
-            try {
-                const data = await getHospitals();
+    console.log("useHospitals called");
 
-                setHospitals(data);
-            } catch {
-                setError("Failed to load hospitals.");
-            } finally {
-                setLoading(false);
-            }
+    async function loadHospitals() {
+        console.log("Loading hospitals...");
+
+        try {
+            const data = await getHospitals();
+            console.log(data);
+
+            setHospitals(data);
+        } catch (error) {
+            console.error(error);
+            setError("Failed to load hospitals.");
+        } finally {
+            setLoading(false);
         }
+    }
 
-        loadHospitals();
-    }, []);
+    loadHospitals();
+}, []);
 
     return {
         hospitals,
