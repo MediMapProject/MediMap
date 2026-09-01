@@ -1,5 +1,9 @@
 import "./LoadingSpinner.css";
 
 export default function LoadingSpinner() {
-	return <div className="loading-spinner">Loading Spinner</div>;
+    return (
+        <div className="loading-spinner">
+            <div className="spinner" />
+        </div>
+    );
 }
