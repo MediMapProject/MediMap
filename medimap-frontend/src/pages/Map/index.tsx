@@ -11,18 +11,29 @@ import RoomPopup from "./components/RoomPopup/RoomPopup";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 
 import { useHospitals } from "@/shared/hooks/useHospitals";
+import { useBuildings } from "@/shared/hooks/useBuildings";
 
 export default function Map() {
+    const [selectedHospitalId, setSelectedHospitalId] =
+        useState<number | null>(null);
+
+    const [selectedBuildingId, setSelectedBuildingId] =
+        useState<number | null>(null);
+
     const { hospitals, loading, error } = useHospitals();
 
-    const [selectedHospitalId, setSelectedHospitalId] = useState<number | null>(null);
+    const {
+        buildings,
+        loading: buildingsLoading,
+        error: buildingsError,
+    } = useBuildings(selectedHospitalId);
 
-    if (loading) {
+    if (loading || buildingsLoading) {
         return <LoadingSpinner />;
     }
 
-    if (error) {
-        return <p>{error}</p>;
+    if (error || buildingsError) {
+        return <p>{error ?? buildingsError}</p>;
     }
 
     return (
@@ -35,10 +46,19 @@ export default function Map() {
                 <HospitalSelector
                     hospitals={hospitals}
                     value={selectedHospitalId}
-                    onChange={setSelectedHospitalId}
+                    onChange={(hospitalId) => {
+                        setSelectedHospitalId(hospitalId);
+
+                        // resetăm clădirea când schimbăm spitalul
+                        setSelectedBuildingId(null);
+                    }}
                 />
 
-                <BuildingSelector />
+                <BuildingSelector
+                    buildings={buildings}
+                    value={selectedBuildingId}
+                    onChange={setSelectedBuildingId}
+                />
 
                 <FloorSelector />
             </section>
