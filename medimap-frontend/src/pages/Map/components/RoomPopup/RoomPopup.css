@@ -1,3 +1,47 @@
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
 .room-popup {
-	padding: 16px;
+    width: 420px;
+
+    background: white;
+
+    border-radius: 16px;
+
+    padding: 24px;
+
+    position: relative;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,.15);
+}
+
+.close-button {
+
+    position: absolute;
+
+    right: 16px;
+
+    top: 16px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 24px;
+}
+
+.room-popup h2{
+    margin-top:0;
 }
