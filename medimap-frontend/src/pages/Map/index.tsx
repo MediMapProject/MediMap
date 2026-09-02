@@ -46,6 +46,10 @@ export default function Map() {
         error: roomsError,
     } = useRooms(selectedFloorId);
 
+    const selectedFloor = floors.find(
+        (floor) => floor.id === selectedFloorId
+    );
+
     if (
         loading ||
         buildingsLoading ||
@@ -107,9 +111,12 @@ export default function Map() {
             </section>
 
             <section className="map-section">
-                <MapViewer
-                    mapPath="/maps/hospital-1/building-a/basement.svg"
-                />
+                {selectedFloor && (
+                    <MapViewer
+                        key={selectedFloor.id}
+                        mapPath={selectedFloor.mapPath}
+                    />
+                )}
             </section>
         </main>
     );
