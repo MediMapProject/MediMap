@@ -1,17 +1,17 @@
 import api from "./client";
-import type { Doctor } from "../types/Doctor";
+
+import type { Doctor } from "@/shared/types/Doctor";
 
 export async function getDoctorsByRoom(
-    roomId: number
+    roomId: number,
 ): Promise<Doctor[]> {
-
     const response = await api.get<Doctor[]>(
         "/doctors/by-room",
         {
             params: {
                 roomId,
             },
-        }
+        },
     );
 
     return response.data;

@@ -45,6 +45,8 @@ export default function Map() {
         error: roomsError,
     } = useRooms(selectedFloorId);
 
+    console.log("Rooms state:", rooms);
+
     if (
         loading ||
         buildingsLoading ||
