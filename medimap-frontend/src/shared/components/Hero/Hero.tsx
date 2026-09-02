@@ -1,39 +1,33 @@
 import "./Hero.css";
 
-import HospitalIllustration from "@/assets/icons/images/hospital-illustration.png";
+import HospitalIllustration from "@/assets/images/hospital-illustration.png";
 
 export default function Hero() {
     return (
         <section className="hero">
 
-    <div className="hero__content">
+            <div className="hero__content">
 
-        <h1>
+                <h1 className="hero__title">
+                    Găsește ușor
+                    <br />
+                    <span>drumul potrivit</span>
+                </h1>
 
-            Găsește ușor
+                <p className="hero__description">
+                    Harta interactivă a spitalului te ajută să găsești
+                    rapid departamente, cabinete și medici.
+                </p>
 
-            <br />
+            </div>
 
-            <span>drumul potrivit</span>
+            <div className="hero__image">
+                <img
+                    src={HospitalIllustration}
+                    alt="Hospital illustration"
+                />
+            </div>
 
-        </h1>
-
-        <p>
-
-            Harta interactivă a spitalului te ajută să găsești
-            rapid departamente, cabinete și medici.
-
-        </p>
-
-    </div>
-
-    <div className="hero__image">
-
-        <img
-            src={HospitalIllustration}
-            alt="Hospital illustration"
-        />
-
-    </div>
-
-</section>
+        </section>
+    );
+}
