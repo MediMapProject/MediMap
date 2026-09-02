@@ -12,15 +12,19 @@ import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 
 import { useHospitals } from "@/shared/hooks/useHospitals";
 import { useBuildings } from "@/shared/hooks/useBuildings";
+import { useFloors } from "@/shared/hooks/useFloors";
 
 export default function Map() {
+    const { hospitals, loading, error } = useHospitals();
+
     const [selectedHospitalId, setSelectedHospitalId] =
         useState<number | null>(null);
 
     const [selectedBuildingId, setSelectedBuildingId] =
         useState<number | null>(null);
 
-    const { hospitals, loading, error } = useHospitals();
+    const [selectedFloorId, setSelectedFloorId] =
+        useState<number | null>(null);
 
     const {
         buildings,
@@ -28,12 +32,22 @@ export default function Map() {
         error: buildingsError,
     } = useBuildings(selectedHospitalId);
 
-    if (loading || buildingsLoading) {
+    const {
+        floors,
+        loading: floorsLoading,
+        error: floorsError,
+    } = useFloors(selectedBuildingId);
+
+    if (loading || buildingsLoading || floorsLoading) {
         return <LoadingSpinner />;
     }
 
-    if (error || buildingsError) {
-        return <p>{error ?? buildingsError}</p>;
+    if (error || buildingsError || floorsError) {
+        return (
+            <p>
+                {error ?? buildingsError ?? floorsError}
+            </p>
+        );
     }
 
     return (
@@ -49,18 +63,26 @@ export default function Map() {
                     onChange={(hospitalId) => {
                         setSelectedHospitalId(hospitalId);
 
-                        // resetăm clădirea când schimbăm spitalul
                         setSelectedBuildingId(null);
+                        setSelectedFloorId(null);
                     }}
                 />
 
                 <BuildingSelector
                     buildings={buildings}
                     value={selectedBuildingId}
-                    onChange={setSelectedBuildingId}
+                    onChange={(buildingId) => {
+                        setSelectedBuildingId(buildingId);
+
+                        setSelectedFloorId(null);
+                    }}
                 />
 
-                <FloorSelector />
+                <FloorSelector
+                    floors={floors}
+                    value={selectedFloorId}
+                    onChange={setSelectedFloorId}
+                />
             </section>
 
             <section className="map-container">

@@ -18,7 +18,7 @@ export function useBuildings(hospitalId: number | null) {
             setLoading(true);
 
             try {
-                const data = await getBuildingsByHospital(hospitalId);
+               const data = await getBuildingsByHospital(hospitalId!);
 
                 setBuildings(data);
                 setError(null);
