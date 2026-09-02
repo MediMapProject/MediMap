@@ -11,7 +11,6 @@ export default function MapViewer({
 
     const [svgContent, setSvgContent] = useState("");
 
-	console.log("Received mapPath:", mapPath);
 
   useEffect(() => {
     if (!mapPath) {
@@ -25,7 +24,6 @@ export default function MapViewer({
 
         const svg = await response.text();
 
-        console.log(svg);
 
         setSvgContent(svg);
     }

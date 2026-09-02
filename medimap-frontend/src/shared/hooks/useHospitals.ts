@@ -9,14 +9,14 @@ export function useHospitals() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-    console.log("useHospitals called");
+
 
     async function loadHospitals() {
-        console.log("Loading hospitals...");
+
 
         try {
             const data = await getHospitals();
-            console.log(data);
+
 
             setHospitals(data);
         } catch (error) {

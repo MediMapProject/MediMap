@@ -19,10 +19,9 @@ export function useRooms(floorId: number | null) {
 
             try {
                 const data = await getRoomsByFloor(floorId!);
-                console.log("Rooms:", data);
+
 
                 setRooms(data);
-                console.log("Rooms loaded");
                 setError(null);
             } catch {
                 setError("Failed to load rooms.");
