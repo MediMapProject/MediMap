@@ -45,6 +45,12 @@ export default function Map() {
         error: roomsError,
     } = useRooms(selectedFloorId);
 
+    const selectedFloor = floors.find(
+    floor => floor.id === selectedFloorId
+);
+
+console.log("Selected floor:", selectedFloor);
+
     console.log("Rooms state:", rooms);
 
     if (
@@ -107,11 +113,9 @@ export default function Map() {
                 />
             </section>
 
-            <section className="map-container">
-                <MapViewer mapPath="/maps/hospital/building-a/basement.svg"/>
-            </section>
+        <MapViewer mapPath={selectedFloor?.mapPath ?? null} />
 
-            <RoomPopup />
+             {/* <RoomPopup /> */}
         </main>
     );
 }

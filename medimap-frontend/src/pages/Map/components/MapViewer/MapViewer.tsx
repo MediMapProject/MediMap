@@ -11,6 +11,8 @@ export default function MapViewer({
 
     const [svgContent, setSvgContent] = useState("");
 
+	console.log("Received mapPath:", mapPath);
+
   useEffect(() => {
     if (!mapPath) {
         return;
@@ -31,6 +33,14 @@ export default function MapViewer({
     loadSvg();
 
 }, [mapPath]);
+
+    if (!mapPath) {
+        return (
+            <div className="map-viewer">
+                Select a floor to display the map.
+            </div>
+        );
+    }  
 
    return (
     <div
