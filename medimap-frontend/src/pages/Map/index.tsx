@@ -6,9 +6,10 @@ import HospitalSelector from "./components/HospitalSelector/HospitalSelector";
 import BuildingSelector from "./components/BuildingSelector/BuildingSelector";
 import FloorSelector from "./components/FloorSelector/FloorSelector";
 import MapViewer from "./components/MapViewer/MapViewer";
-import RoomPopup from "./components/RoomPopup/RoomPopup";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
+
 import AppHeader from "@/shared/components/AppHeader/AppHeader";
+import Hero from "@/shared/components/Hero/Hero";
 
 import { useHospitals } from "@/shared/hooks/useHospitals";
 import { useBuildings } from "@/shared/hooks/useBuildings";
@@ -74,7 +75,10 @@ export default function Map() {
         <main className="map-page">
             <AppHeader />
 
-            <section className="selectors">
+            <Hero />
+
+            <section className="selector-section">
+
                 <HospitalSelector
                     hospitals={hospitals}
                     value={selectedHospitalId}
@@ -99,13 +103,14 @@ export default function Map() {
                     value={selectedFloorId}
                     onChange={setSelectedFloorId}
                 />
+
             </section>
 
-            <section className="map-container">
-                <MapViewer mapPath="/maps/hospital/building-a/basement.svg"/>
+            <section className="map-section">
+                <MapViewer
+                    mapPath="/maps/hospital-1/building-a/basement.svg"
+                />
             </section>
-
-           {/* <RoomPopup /> */}
         </main>
     );
 }
