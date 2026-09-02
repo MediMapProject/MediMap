@@ -45,14 +45,6 @@ export default function Map() {
         error: roomsError,
     } = useRooms(selectedFloorId);
 
-    const selectedFloor = floors.find(
-    floor => floor.id === selectedFloorId
-);
-
-console.log("Selected floor:", selectedFloor);
-
-    console.log("Rooms state:", rooms);
-
     if (
         loading ||
         buildingsLoading ||
@@ -90,7 +82,6 @@ console.log("Selected floor:", selectedFloor);
                     value={selectedHospitalId}
                     onChange={(hospitalId) => {
                         setSelectedHospitalId(hospitalId);
-
                         setSelectedBuildingId(null);
                         setSelectedFloorId(null);
                     }}
@@ -101,7 +92,6 @@ console.log("Selected floor:", selectedFloor);
                     value={selectedBuildingId}
                     onChange={(buildingId) => {
                         setSelectedBuildingId(buildingId);
-
                         setSelectedFloorId(null);
                     }}
                 />
@@ -113,9 +103,11 @@ console.log("Selected floor:", selectedFloor);
                 />
             </section>
 
-        <MapViewer mapPath={selectedFloor?.mapPath ?? null} />
+            <section className="map-container">
+                <MapViewer mapPath="/maps/hospital/building-a/basement.svg"/>
+            </section>
 
-             {/* <RoomPopup /> */}
+           {/* <RoomPopup /> */}
         </main>
     );
 }
