@@ -5,5 +5,6 @@ public record FloorDTO(
         int floorNumber,
         String name,
         Long buildingId,
-        String buildingName
+        String buildingName,
+        String mapPath
 ) {}

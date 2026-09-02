@@ -4,4 +4,5 @@ export interface Floor {
     name: string;
     buildingId: number;
     buildingName: string;
+    mapPath: string;
 }

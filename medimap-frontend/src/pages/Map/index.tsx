@@ -108,7 +108,7 @@ export default function Map() {
             </section>
 
             <section className="map-container">
-                <MapViewer />
+                <MapViewer mapPath="/maps/hospital/building-a/basement.svg"/>
             </section>
 
             <RoomPopup />

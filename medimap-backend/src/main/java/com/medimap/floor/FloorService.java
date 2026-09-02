@@ -27,7 +27,8 @@ public class FloorService
                floor.getFloorNumber(),
                floor.getName(),
                floor.getBuilding().getId(),
-               floor.getBuilding().getName()
+               floor.getBuilding().getName(),
+               floor.getMapPath()
        );
     }
 

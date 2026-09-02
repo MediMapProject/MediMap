@@ -1,0 +1,40 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 600 400"
+>
+    <rect
+        x="50"
+        y="50"
+        width="200"
+        height="120"
+        fill="#dbeafe"
+        stroke="#2563eb"
+        stroke-width="3"
+    />
+
+    <text
+        x="90"
+        y="120"
+        font-size="22"
+    >
+        Room 101
+    </text>
+
+    <rect
+        x="320"
+        y="50"
+        width="200"
+        height="120"
+        fill="#dcfce7"
+        stroke="#16a34a"
+        stroke-width="3"
+    />
+
+    <text
+        x="360"
+        y="120"
+        font-size="22"
+    >
+        Room 102
+    </text>
+</svg>
