@@ -1,73 +1,24 @@
 @import "./variables.css";
-@import "./light.css";
-@import "./dark.css";
 @import "./typography.css";
-
-*{
-
-    margin:0;
-
-    padding:0;
-
-    box-sizing:border-box;
-
-}
-
-body{
-
-    min-height:100vh;
-
-}
-
-button{
-
-    cursor:pointer;
-
-    border:none;
-
-}
-
-a{
-
-    text-decoration:none;
-
-    color:inherit;
-
-}
-
-img{
-
-    display:block;
-
-    max-width:100%;
-
-}
-
-/* Mobile First */
+@import "./layout.css";
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-html,
-body,
-#root {
-    width: 100%;
-    min-height: 100vh;
-}
-
 body {
-    margin: 0;
+    background: var(--background);
 }
 
-/* Tablet */
-
-@media (min-width: 768px) {
-
+button,
+input,
+select {
+    font: inherit;
 }
 
-/* Desktop */
-
-@media (min-width: 1024px) {
-
+img {
+    display: block;
+    max-width: 100%;
 }

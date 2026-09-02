@@ -5,10 +5,10 @@ import "./index.css";
 import HospitalSelector from "./components/HospitalSelector/HospitalSelector";
 import BuildingSelector from "./components/BuildingSelector/BuildingSelector";
 import FloorSelector from "./components/FloorSelector/FloorSelector";
-import SearchBar from "./components/SearchBar/SearchBar";
 import MapViewer from "./components/MapViewer/MapViewer";
 import RoomPopup from "./components/RoomPopup/RoomPopup";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
+import AppHeader from "@/shared/components/AppHeader/AppHeader";
 
 import { useHospitals } from "@/shared/hooks/useHospitals";
 import { useBuildings } from "@/shared/hooks/useBuildings";
@@ -72,9 +72,7 @@ export default function Map() {
 
     return (
         <main className="map-page">
-            <header className="top-bar">
-                <SearchBar />
-            </header>
+            <AppHeader />
 
             <section className="selectors">
                 <HospitalSelector

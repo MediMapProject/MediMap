@@ -10,6 +10,7 @@ export default function MapViewer({
 }: MapViewerProps) {
 
     const [svgContent, setSvgContent] = useState("");
+    console.log("Received mapPath:", mapPath);
 
 
   useEffect(() => {
@@ -20,13 +21,17 @@ export default function MapViewer({
     const path = mapPath;
 
     async function loadSvg() {
-        const response = await fetch(path);
-
-        const svg = await response.text();
-
-
-        setSvgContent(svg);
-    }
+    const response = await fetch(path);
+ 
+    console.log("Status:", response.status);
+    console.log("OK:", response.ok);
+ 
+    const svg = await response.text();
+ 
+    console.log(svg.substring(0, 50));
+ 
+    setSvgContent(svg);
+}
 
     loadSvg();
 

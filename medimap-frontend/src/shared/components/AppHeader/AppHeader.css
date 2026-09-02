@@ -1,0 +1,28 @@
+.header {
+    height: 72px;
+
+    background: var(--surface);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 var(--space-6);
+
+    border-bottom: 1px solid var(--border);
+
+    box-shadow: var(--shadow-sm);
+}
+
+.header__logo {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.header__menu {
+    border: none;
+    background: transparent;
+    font-size: 32px;
+    cursor: pointer;
+}
