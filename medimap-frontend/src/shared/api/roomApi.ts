@@ -1,8 +1,9 @@
 import api from "./client";
-import type { Room } from "../types/Room";
+
+import type { Room } from "@/shared/types/Room";
 
 export async function getRoomsByFloor(
-    floorId: number
+    floorId: number,
 ): Promise<Room[]> {
 
     const response = await api.get<Room[]>(
@@ -11,7 +12,7 @@ export async function getRoomsByFloor(
             params: {
                 floorId,
             },
-        }
+        },
     );
 
     return response.data;

@@ -13,6 +13,7 @@ import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import { useHospitals } from "@/shared/hooks/useHospitals";
 import { useBuildings } from "@/shared/hooks/useBuildings";
 import { useFloors } from "@/shared/hooks/useFloors";
+import { useRooms } from "@/shared/hooks/useRooms";
 
 export default function Map() {
     const { hospitals, loading, error } = useHospitals();
@@ -38,14 +39,33 @@ export default function Map() {
         error: floorsError,
     } = useFloors(selectedBuildingId);
 
-    if (loading || buildingsLoading || floorsLoading) {
+    const {
+        rooms,
+        loading: roomsLoading,
+        error: roomsError,
+    } = useRooms(selectedFloorId);
+
+    if (
+        loading ||
+        buildingsLoading ||
+        floorsLoading ||
+        roomsLoading
+    ) {
         return <LoadingSpinner />;
     }
 
-    if (error || buildingsError || floorsError) {
+    if (
+        error ||
+        buildingsError ||
+        floorsError ||
+        roomsError
+    ) {
         return (
             <p>
-                {error ?? buildingsError ?? floorsError}
+                {error ??
+                    buildingsError ??
+                    floorsError ??
+                    roomsError}
             </p>
         );
     }
