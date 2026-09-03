@@ -13,29 +13,15 @@ public class DoctorService {
     List<DoctorDTO> getAllDoctors() {
         return doctorRepository.findAll()
                 .stream()
-                .map(this::getDoctorDTO)
+                .map(DoctorMapper::toDto)
                 .toList();
     }
 
-    private DoctorDTO getDoctorDTO(Doctor doctor) {
-        return new DoctorDTO(
-                doctor.getId(),
-                doctor.getDepartment().getId(),
-                doctor.getDepartment().getName(),
-                doctor.getRoom().getId(),
-                doctor.getRoom().getName(),
-                doctor.getFirstName(),
-                doctor.getLastName(),
-                doctor.getTitle(),
-                doctor.getEmail(),
-                doctor.getPhone()
-        );
-    }
 
     public List<DoctorDTO> getDoctorsByRoomId(Long roomId) {
         return doctorRepository.findByRoomId(roomId)
                 .stream()
-                .map(this::getDoctorDTO)
+                .map(DoctorMapper::toDto)
                 .toList();
     }
 }

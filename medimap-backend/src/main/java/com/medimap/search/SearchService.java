@@ -36,35 +36,35 @@ public class SearchService {
 
         for (Doctor doctor : doctors)
         {
-            results.add(SearchMapper.doctorToSearchDTO(doctor));
+            results.add(SearchMapper.toSearchDto(doctor));
         }
 
         List<Department> departments = departmentRepository.findByNameContainingIgnoreCase(query);
 
         for(Department department : departments)
         {
-            results.add(SearchMapper.departmentToSearchDTO(department));
+            results.add(SearchMapper.toSearchDto(department));
         }
 
         List<Room> rooms = roomRepository.findByNumberContainingIgnoreCaseOrNameContainingIgnoreCase(query, query);
 
         for(Room room : rooms)
         {
-            results.add(SearchMapper.roomToSearchDTO(room));
+            results.add(SearchMapper.toSearchDto(room));
         }
 
         List<Hospital> hospitals = hospitalRepository.findByNameContainingIgnoreCase(query);
 
         for(Hospital hospital : hospitals)
         {
-            results.add(SearchMapper.hospitalToSearchDTO(hospital));
+            results.add(SearchMapper.toSearchDto(hospital));
         }
 
         List<Building> buildings = buildingRepository.findByNameContainingIgnoreCase(query);
 
         for(Building building : buildings)
         {
-            results.add(SearchMapper.buildingToSearchDTO(building));
+                results.add(SearchMapper.toSearchDto(building));
         }
 
         return results;

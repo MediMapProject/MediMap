@@ -1,33 +1,22 @@
 package com.medimap.hospital;
-import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class HospitalService
-{
+public class HospitalService {
+
     private final HospitalRepository hospitalRepository;
-    public HospitalService(HospitalRepository hospitalRepository)
-    {
+
+    public HospitalService(HospitalRepository hospitalRepository) {
         this.hospitalRepository = hospitalRepository;
     }
 
-    public List<HospitalDTO> getAllHospitals()
-    {
+    public List<HospitalDTO> getAllHospitals() {
         return hospitalRepository.findAll()
                 .stream()
-                .map(this::buildHospitalDTO)
+                .map(HospitalMapper::toDto)
                 .toList();
-    }
-
-    private HospitalDTO buildHospitalDTO(Hospital hospital)
-    {
-        return new HospitalDTO(
-                hospital.getId(),
-                hospital.getName(),
-                hospital.getAddress(),
-                hospital.getCity(),
-                hospital.getPhone(),
-                hospital.getEmail()
-        );
     }
 }
