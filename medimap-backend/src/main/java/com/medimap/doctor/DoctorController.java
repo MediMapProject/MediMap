@@ -2,6 +2,7 @@ package com.medimap.doctor;
 
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/doctors")
@@ -17,7 +18,7 @@ public class DoctorController
     }
 
     @GetMapping("/by-room")
-    public List<DoctorDTO> getDoctorsByRoomId(@RequestParam Long roomId) {
+    public List<DoctorDTO> getDoctorsByRoomId(@RequestParam UUID roomId) {
         return doctorService.getDoctorsByRoomId(roomId);
     }
 }

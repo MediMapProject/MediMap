@@ -3,6 +3,7 @@ package com.medimap.building;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class BuildingService {
@@ -20,7 +21,7 @@ public class BuildingService {
                 .toList();
     }
 
-    public List<BuildingDTO> getBuildingsByHospitalId(Long hospitalId) {
+    public List<BuildingDTO> getBuildingsByHospitalId(UUID hospitalId) {
         return buildingRepository.findByHospitalId(hospitalId)
                 .stream()
                 .map(BuildingMapper::toDto)

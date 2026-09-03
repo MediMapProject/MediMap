@@ -1,6 +1,6 @@
 export interface Department {
-    id: number;
-    hospitalId: number;
+    id: string;
+    hospitalId: string;
     hospitalName: string;
     name: string;
     description: string;

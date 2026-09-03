@@ -1,8 +1,8 @@
 export interface Room {
-    id: number;
-    floorId: number;
+    id: string;
+    floorId: string;
     floorName: string;
-    departmentId: number;
+    departmentId: string;
     departmentName: string;
     number: string;
     name: string;

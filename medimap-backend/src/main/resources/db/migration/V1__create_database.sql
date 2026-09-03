@@ -1,5 +1,7 @@
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
 CREATE TABLE hospital (
-    id BIGSERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
     name VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
@@ -10,8 +12,9 @@ CREATE TABLE hospital (
 );
 
 CREATE TABLE building (
-    id BIGSERIAL PRIMARY KEY,
-    hospital_id BIGINT NOT NULL,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    hospital_id UUID NOT NULL,
+
     name VARCHAR(255) NOT NULL,
     description TEXT,
 
@@ -22,8 +25,9 @@ CREATE TABLE building (
 );
 
 CREATE TABLE floor (
-    id BIGSERIAL PRIMARY KEY,
-    building_id BIGINT NOT NULL,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    building_id UUID NOT NULL,
+
     floor_number INTEGER NOT NULL,
     name VARCHAR(255) NOT NULL,
     map_path VARCHAR(500) NOT NULL,
@@ -35,8 +39,9 @@ CREATE TABLE floor (
 );
 
 CREATE TABLE department (
-    id BIGSERIAL PRIMARY KEY,
-    hospital_id BIGINT NOT NULL,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    hospital_id UUID NOT NULL,
+
     name VARCHAR(255) NOT NULL,
     description TEXT,
 
@@ -47,9 +52,10 @@ CREATE TABLE department (
 );
 
 CREATE TABLE room (
-    id BIGSERIAL PRIMARY KEY,
-    floor_id BIGINT NOT NULL,
-    department_id BIGINT,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    floor_id UUID NOT NULL,
+    department_id UUID,
+
     number VARCHAR(50) NOT NULL,
     name VARCHAR(255) NOT NULL,
     description TEXT,
@@ -70,9 +76,10 @@ CREATE TABLE room (
 );
 
 CREATE TABLE doctor (
-    id BIGSERIAL PRIMARY KEY,
-    department_id BIGINT NOT NULL,
-    room_id BIGINT,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    department_id UUID NOT NULL,
+    room_id UUID,
+
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
     title VARCHAR(100) NOT NULL,

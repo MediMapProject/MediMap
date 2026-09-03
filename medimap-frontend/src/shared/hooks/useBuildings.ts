@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getBuildingsByHospital } from "../api/buildingApi";
 import type { Building } from "../types/Building";
 
-export function useBuildings(hospitalId: number | null) {
+export function useBuildings(hospitalId: string | null) {
     const [buildings, setBuildings] = useState<Building[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);

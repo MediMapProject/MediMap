@@ -3,8 +3,8 @@ import type { Hospital } from "@/shared/types/Hospital";
 
 type HospitalSelectorProps = {   
     hospitals: Hospital[];
-    value: number | null;
-    onChange: (hospitalId: number) => void;
+    value: string | null;
+    onChange: (hospitalId: string) => void;
 };
 
 export default function HospitalSelector({
@@ -22,7 +22,7 @@ export default function HospitalSelector({
                 id="hospital-select"
                 value={value ?? ""}
                 onChange={(event) =>
-                    onChange(Number(event.target.value))
+                    onChange(event.target.value)
                 }
             >
                 <option value="">

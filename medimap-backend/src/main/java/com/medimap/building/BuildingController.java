@@ -1,6 +1,8 @@
 package com.medimap.building;
 
 import java.util.List;
+import java.util.UUID;
+
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,7 +19,7 @@ public class BuildingController
     }
 
     @GetMapping("/by-hospital")
-    public List<BuildingDTO> getBuildingsByHospitalId(@RequestParam Long hospitalId) {
+    public List<BuildingDTO> getBuildingsByHospitalId(@RequestParam UUID hospitalId) {
         return buildingService.getBuildingsByHospitalId(hospitalId);
     }
 }

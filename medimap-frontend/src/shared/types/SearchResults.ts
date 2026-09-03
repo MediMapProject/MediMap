@@ -1,6 +1,6 @@
 export interface SearchResult {
     type: string;
-    id: number;
+    id: string;
     title: string;
     subtitle: string;
 }

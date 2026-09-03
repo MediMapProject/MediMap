@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getDoctorsByRoom } from "@/shared/api/doctorApi";
 import type { Doctor } from "@/shared/types/Doctor";
 
-export function useDoctors(roomId: number | null) {
+export function useDoctors(roomId: string | null) {
     const [doctors, setDoctors] = useState<Doctor[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);

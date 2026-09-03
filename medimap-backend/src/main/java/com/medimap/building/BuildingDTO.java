@@ -1,9 +1,11 @@
 package com.medimap.building;
 
+import java.util.UUID;
+
 public record BuildingDTO(
-        Long id,
+        UUID id,
         String name,
         String description,
-        Long hospitalId,
+        UUID hospitalId,
         String hospitalName
 ) {}

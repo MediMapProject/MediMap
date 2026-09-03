@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getRoomsByFloor } from "@/shared/api/roomApi";
 import type { Room } from "@/shared/types/Room";
 
-export function useRooms(floorId: number | null) {
+export function useRooms(floorId: string | null) {
     const [rooms, setRooms] = useState<Room[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);

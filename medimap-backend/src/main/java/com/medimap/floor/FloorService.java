@@ -3,6 +3,7 @@ package com.medimap.floor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class FloorService
@@ -20,7 +21,7 @@ public class FloorService
                 .toList();
     }
 
-    public List<FloorDTO> getFloorsByBuildingId(Long buildingId)
+    public List<FloorDTO> getFloorsByBuildingId(UUID buildingId)
     {
         return floorRepository.findByBuildingId(buildingId)
                 .stream()
