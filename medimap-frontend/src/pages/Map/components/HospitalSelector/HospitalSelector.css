@@ -1,16 +1,73 @@
 .hospital-selector {
     display: flex;
     flex-direction: column;
+
     gap: 8px;
 }
 
-.hospital-selector label {
+.hospital-selector__label {
+    font-size: 14px;
     font-weight: 600;
+
+    color: #475569;
+
+    padding-left: 4px;
 }
 
-.hospital-selector select {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #d1d5db;
-    font-size: 14px;
+.hospital-selector__card {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 16px;
+
+    padding: 0 16px;
+
+    height: 60px;
+
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+
+    transition: .2s;
+}
+
+.hospital-selector__card:focus-within {
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 4px rgba(37,99,235,.10);
+}
+
+.hospital-selector__icon {
+    color: #2563eb;
+
+    flex-shrink: 0;
+}
+
+.hospital-selector__select {
+    flex: 1;
+
+    height: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    outline: none;
+
+    font-size: 16px;
+
+    color: #0f172a;
+
+    cursor: pointer;
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    -moz-appearance: none;
 }

@@ -1,7 +1,10 @@
+import { Building2 } from "lucide-react";
+
 import "./HospitalSelector.css";
+
 import type { Hospital } from "@/shared/types/Hospital";
 
-type HospitalSelectorProps = {   
+type HospitalSelectorProps = {
     hospitals: Hospital[];
     value: number | null;
     onChange: (hospitalId: number) => void;
@@ -14,30 +17,45 @@ export default function HospitalSelector({
 }: HospitalSelectorProps) {
     return (
         <div className="hospital-selector">
-            <label htmlFor="hospital-select">
+
+            <label
+                htmlFor="hospital-select"
+                className="hospital-selector__label"
+            >
                 Hospital
             </label>
 
-            <select
-                id="hospital-select"
-                value={value ?? ""}
-                onChange={(event) =>
-                    onChange(Number(event.target.value))
-                }
-            >
-                <option value="">
-                    Select a hospital
-                </option>
+            <div className="hospital-selector__card">
 
-                {hospitals.map((hospital) => (
-                    <option
-                        key={hospital.id}
-                        value={hospital.id}
-                    >
-                        {hospital.name}
+                <Building2
+                    size={22}
+                    className="hospital-selector__icon"
+                />
+
+                <select
+                    id="hospital-select"
+                    className="hospital-selector__select"
+                    value={value ?? ""}
+                    onChange={(event) =>
+                        onChange(Number(event.target.value))
+                    }
+                >
+                    <option value="">
+                        Select a hospital
                     </option>
-                ))}
-            </select>
+
+                    {hospitals.map((hospital) => (
+                        <option
+                            key={hospital.id}
+                            value={hospital.id}
+                        >
+                            {hospital.name}
+                        </option>
+                    ))}
+                </select>
+
+            </div>
+
         </div>
     );
 }
