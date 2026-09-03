@@ -18,7 +18,11 @@ export default function Hero() {
                 </p>
             </div>
 
-                </div>
+            <div className="hero__image">
+                <img
+                    src={HospitalIllustration}
+                    alt="Hospital illustration"
+                />
             </div>
         </section>
     );
