@@ -10,6 +10,8 @@ import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 
 import AppHeader from "@/shared/components/AppHeader/AppHeader";
 import Hero from "@/shared/components/Hero/Hero";
+import SearchBar from "./components/SearchBar/SearchBar";
+
 
 import { useHospitals } from "@/shared/hooks/useHospitals";
 import { useBuildings } from "@/shared/hooks/useBuildings";
@@ -80,6 +82,7 @@ export default function Map() {
             <AppHeader />
 
             <Hero />
+            <SearchBar />
 
             <section className="selector-section">
 
