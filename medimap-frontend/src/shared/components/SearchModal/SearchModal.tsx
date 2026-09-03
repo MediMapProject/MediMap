@@ -1,6 +1,7 @@
 import { Search, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
+import { useDebounce } from "@/shared/hooks/useDebounce";
 import { useSearch } from "@/shared/hooks/useSearch";
 
 import "./SearchModal.css";
@@ -9,12 +10,21 @@ type Props = {
     onClose: () => void;
 };
 
-export default function SearchModal({
-    onClose,
-}: Props) {
-    const [query, setQuery] = useState("");
+export default function SearchModal({ onClose }: Props) {
 
-    const { results, loading } = useSearch(query);
+    const [input, setInput] = useState("");
+
+    const debouncedQuery = useDebounce(input, 500);
+
+    const {
+        results,
+        loading,
+        searchNow,
+    } = useSearch();
+
+    useEffect(() => {
+        searchNow(debouncedQuery);
+    }, [debouncedQuery, searchNow]);
 
     return (
         <div className="search-modal-overlay">
@@ -28,8 +38,13 @@ export default function SearchModal({
                         autoFocus
                         type="text"
                         placeholder="Search doctor, room, department..."
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                searchNow(input);
+                            }
+                        }}
                     />
 
                     <button onClick={onClose}>
@@ -67,7 +82,7 @@ export default function SearchModal({
                         ))}
 
                     {!loading &&
-                        query &&
+                        input.trim().length >= 2 &&
                         results.length === 0 && (
                             <div className="search-empty">
                                 No results found
