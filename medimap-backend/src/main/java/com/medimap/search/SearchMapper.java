@@ -6,9 +6,12 @@ import com.medimap.doctor.Doctor;
 import com.medimap.hospital.Hospital;
 import com.medimap.room.Room;
 
-public class SearchMapper {
+public final class SearchMapper {
 
-    public static SearchDTO doctorToSearchDTO(Doctor doctor) {
+    private SearchMapper() {
+    }
+
+    public static SearchDTO toSearchDto(Doctor doctor) {
         return new SearchDTO(
                 "DOCTOR",
                 doctor.getId(),
@@ -17,7 +20,7 @@ public class SearchMapper {
         );
     }
 
-    public static SearchDTO departmentToSearchDTO(Department department) {
+    public static SearchDTO toSearchDto(Department department) {
         return new SearchDTO(
                 "DEPARTMENT",
                 department.getId(),
@@ -26,7 +29,7 @@ public class SearchMapper {
         );
     }
 
-    public static SearchDTO roomToSearchDTO(Room room) {
+    public static SearchDTO toSearchDto(Room room) {
         return new SearchDTO(
                 "ROOM",
                 room.getId(),
@@ -35,7 +38,7 @@ public class SearchMapper {
         );
     }
 
-    public static SearchDTO buildingToSearchDTO(Building building) {
+    public static SearchDTO toSearchDto(Building building) {
         return new SearchDTO(
                 "BUILDING",
                 building.getId(),
@@ -44,7 +47,7 @@ public class SearchMapper {
         );
     }
 
-    public static SearchDTO hospitalToSearchDTO(Hospital hospital) {
+    public static SearchDTO toSearchDto(Hospital hospital) {
         return new SearchDTO(
                 "HOSPITAL",
                 hospital.getId(),

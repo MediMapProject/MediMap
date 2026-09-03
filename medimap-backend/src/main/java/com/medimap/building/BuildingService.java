@@ -1,36 +1,29 @@
 package com.medimap.building;
-import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class BuildingService
-{
+public class BuildingService {
+
     private final BuildingRepository buildingRepository;
 
-    public BuildingService(BuildingRepository buildingRepository) {this.buildingRepository = buildingRepository;}
+    public BuildingService(BuildingRepository buildingRepository) {
+        this.buildingRepository = buildingRepository;
+    }
 
     public List<BuildingDTO> getAllBuildings() {
         return buildingRepository.findAll()
                 .stream()
-                .map(this::getBuildingDTO)
+                .map(BuildingMapper::toDto)
                 .toList();
-    }
-
-    private BuildingDTO getBuildingDTO(Building building)
-    {
-        return new BuildingDTO(
-                building.getId(),
-                building.getName(),
-                building.getDescription(),
-                building.getHospital().getId(),
-                building.getHospital().getName()
-        );
     }
 
     public List<BuildingDTO> getBuildingsByHospitalId(Long hospitalId) {
         return buildingRepository.findByHospitalId(hospitalId)
                 .stream()
-                .map(this::getBuildingDTO)
+                .map(BuildingMapper::toDto)
                 .toList();
     }
 }
