@@ -8,24 +8,31 @@ export default function Hero() {
 
             <div className="hero__content">
 
-                <h1 className="hero__title">
-                    Găsește ușor
-                    <br />
-                    <span>drumul potrivit</span>
-                </h1>
+                <div className="hero__top">
 
-                <p className="hero__description">
-                    Harta interactivă a spitalului te ajută să găsești
-                    rapid departamente, cabinete și medici.
-                </p>
+                    <div className="hero__text">
 
-            </div>
+                        <h1 className="hero__title">
+                            Găsește ușor
+                            <br />
+                            <span>drumul potrivit</span>
+                        </h1>
 
-            <div className="hero__image">
-                <img
-                    src={HospitalIllustration}
-                    alt="Hospital illustration"
-                />
+                        <p className="hero__description">
+                            Harta interactivă a spitalului te ajută să găsești
+                            rapid departamente, cabinete și medici.
+                        </p>
+
+                    </div>
+
+                    <div className="hero__image">
+                        <img
+                            src={HospitalIllustration}
+                            alt="Hospital illustration"
+                        />
+                    </div>
+
+                </div>
             </div>
 
         </section>

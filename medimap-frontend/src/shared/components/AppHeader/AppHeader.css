@@ -25,25 +25,41 @@
     gap: 12px;
 }
 
+.header__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .header__icon {
     width: 42px;
     height: 42px;
 
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
+    border: none;
     border-radius: 12px;
 
-    background: #e8f1ff;
-    color: #2563eb;
+    background: transparent;
+
+    cursor: pointer;
+
+    color: #334155;
+
+    transition: .2s;
+}
+
+.header__icon:hover {
+    background: #eef4ff;
 }
 
 .header__logo {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #1e293b;
-    letter-spacing: -0.02em;
+    display: block;
+    width: auto;
+    height: 48px;
+    object-fit: contain;
 }
 
 .header__menu {

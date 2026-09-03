@@ -1,26 +1,42 @@
-import { Menu, MapPinned } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 
 import "./AppHeader.css";
 
-export default function AppHeader() {
+import logo from "@/assets/images/logo.png";
+
+type AppHeaderProps = {
+    onSearchClick: () => void;
+};
+
+export default function AppHeader({
+    onSearchClick,
+}: AppHeaderProps) {
     return (
         <header className="header">
-            <div className="header__brand">
-                <div className="header__icon">
-                    <MapPinned size={22} />
-                </div>
-
-                <span className="header__logo">
-                    MediMap
-                </span>
+            <div className="header__brand"> 
+                <img
+                    className="header__logo"
+                    src={logo}
+                    alt="MediMap"
+                />
             </div>
 
-            <button
-                className="header__menu"
-                aria-label="Open menu"
-            >
-                <Menu size={24} />
-            </button>
+            <div className="header__actions">
+                <button
+                    className="header__icon"
+                    onClick={onSearchClick}
+                    aria-label="Search"
+                >
+                    <Search size={22} />
+                </button>
+
+                <button
+                    className="header__icon"
+                    aria-label="Menu"
+                >
+                    <Menu size={24} />
+                </button>
+            </div>
         </header>
     );
 }
