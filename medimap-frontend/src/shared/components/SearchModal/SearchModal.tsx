@@ -1,5 +1,5 @@
 import { Search, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useSearch } from "@/shared/hooks/useSearch";
 
@@ -9,12 +9,30 @@ type Props = {
     onClose: () => void;
 };
 
-export default function SearchModal({
-    onClose,
-}: Props) {
+export default function SearchModal({ onClose }: Props) {
+
+    const [input, setInput] = useState("");
     const [query, setQuery] = useState("");
 
     const { results, loading } = useSearch(query);
+
+    useEffect(() => {
+
+        if (input.trim().length < 2) {
+            setQuery("");
+            return;
+        }
+
+        const timer = setTimeout(() => {
+            if (input !== query) {
+                setQuery(input);
+            }
+
+        }, 500);
+
+        return () => clearTimeout(timer);
+
+    }, [input, query]);
 
     return (
         <div className="search-modal-overlay">
@@ -28,8 +46,13 @@ export default function SearchModal({
                         autoFocus
                         type="text"
                         placeholder="Search doctor, room, department..."
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                setQuery(input);
+                            }
+                        }}
                     />
 
                     <button onClick={onClose}>
@@ -67,7 +90,7 @@ export default function SearchModal({
                         ))}
 
                     {!loading &&
-                        query &&
+                        input.trim().length >= 2 &&
                         results.length === 0 && (
                             <div className="search-empty">
                                 No results found
