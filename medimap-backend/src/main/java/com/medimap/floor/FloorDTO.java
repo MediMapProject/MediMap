@@ -1,10 +1,12 @@
 package com.medimap.floor;
 
+import java.util.UUID;
+
 public record FloorDTO(
-        Long id,
+        UUID id,
         int floorNumber,
         String name,
-        Long buildingId,
+        UUID buildingId,
         String buildingName,
         String mapPath
 ) {}

@@ -10,7 +10,6 @@ import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 
 import AppHeader from "@/shared/components/AppHeader/AppHeader";
 import Hero from "@/shared/components/Hero/Hero";
-import SearchModal from "@/shared/components/SearchModal/SearchModal";
 
 import { useHospitals } from "@/shared/hooks/useHospitals";
 import { useBuildings } from "@/shared/hooks/useBuildings";
@@ -21,16 +20,13 @@ export default function Map() {
     const { hospitals, loading, error } = useHospitals();
 
     const [selectedHospitalId, setSelectedHospitalId] =
-        useState<number | null>(null);
+        useState<string | null>(null);
 
     const [selectedBuildingId, setSelectedBuildingId] =
-        useState<number | null>(null);
+        useState<string | null>(null);
 
     const [selectedFloorId, setSelectedFloorId] =
-        useState<number | null>(null);
-
-    // Va fi folosit pentru SearchModal
-    const [searchOpen, setSearchOpen] = useState(false);
+        useState<string | null>(null);
 
     const {
         buildings,
@@ -82,12 +78,13 @@ export default function Map() {
     return (
         <main className="map-page">
             <AppHeader
-                onSearchClick={() => setSearchOpen(true)}
-            />
+              onSearchClick={() => setSearchOpen(true)}
+             />
 
             <Hero />
 
             <section className="selector-section">
+
                 <HospitalSelector
                     hospitals={hospitals}
                     value={selectedHospitalId}
@@ -112,6 +109,7 @@ export default function Map() {
                     value={selectedFloorId}
                     onChange={setSelectedFloorId}
                 />
+
             </section>
 
             <section className="map-section">
@@ -122,12 +120,6 @@ export default function Map() {
                     />
                 )}
             </section>
-
-           {searchOpen && (
-    <SearchModal
-        onClose={() => setSearchOpen(false)}
-    />
-)}
         </main>
     );
 }

@@ -4,16 +4,13 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.medimap.building.Building;
+import com.medimap.common.BaseEntity;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "hospital")
-public class Hospital
+public class Hospital extends BaseEntity
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(nullable = false)
     private String name;
 
@@ -31,10 +28,6 @@ public class Hospital
     @OneToMany(mappedBy = "hospital")
     private List<Building> buildings=new ArrayList<>();
 
-    public Long getId()
-    {
-        return id;
-    }
 
     public String getName()
     {

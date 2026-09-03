@@ -2,7 +2,7 @@ import api from "./client";
 import type { Building } from "../types/Building";
 
 export async function getBuildingsByHospital(
-    hospitalId: number
+    hospitalId: string
 ): Promise<Building[]> {
 
     const response = await api.get<Building[]>(

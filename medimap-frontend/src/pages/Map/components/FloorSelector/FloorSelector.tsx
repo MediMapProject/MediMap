@@ -4,8 +4,8 @@ import type { Floor } from "@/shared/types/Floor";
 
 type FloorSelectorProps = {
     floors: Floor[];
-    value: number | null;
-    onChange: (floorId: number) => void;
+    value: string | null;
+    onChange: (floorId: string) => void;
 };
 
 export default function FloorSelector({
@@ -23,7 +23,7 @@ export default function FloorSelector({
                 id="floor-select"
                 value={value ?? ""}
                 onChange={(event) =>
-                    onChange(Number(event.target.value))
+                    onChange(event.target.value)
                 }
             >
                 <option value="">

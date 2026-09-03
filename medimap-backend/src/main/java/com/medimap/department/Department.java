@@ -1,15 +1,13 @@
 package com.medimap.department;
 
+import com.medimap.common.BaseEntity;
 import com.medimap.hospital.Hospital;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "department")
-public class Department
+public class Department extends BaseEntity
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "hospital_id", nullable = false)
@@ -22,7 +20,6 @@ public class Department
 
     public Department() {}
 
-    public Long getId() {return id;}
     public Hospital getHospital() {return hospital;}
     public String getName() {return name;}
     public String getDescription() {return description;}

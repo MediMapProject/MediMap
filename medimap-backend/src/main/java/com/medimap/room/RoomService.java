@@ -3,6 +3,7 @@ package com.medimap.room;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class RoomService {
@@ -20,7 +21,7 @@ public class RoomService {
                 .toList();
     }
 
-    public List<RoomDTO> getRoomsByFloorId(Long floorId) {
+    public List<RoomDTO> getRoomsByFloorId(UUID floorId) {
         return roomRepository.findByFloorId(floorId)
                 .stream()
                 .map(RoomMapper::toDto)

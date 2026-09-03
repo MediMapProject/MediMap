@@ -3,8 +3,9 @@ package com.medimap.room;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface RoomRepository extends JpaRepository<Room, Long> {
+public interface RoomRepository extends JpaRepository<Room, UUID> {
     List<Room> findByNumberContainingIgnoreCaseOrNameContainingIgnoreCase(String number, String name);
-    List<Room> findByFloorId(Long floorId);
+    List<Room> findByFloorId(UUID floorId);
 }

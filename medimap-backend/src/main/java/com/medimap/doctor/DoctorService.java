@@ -3,6 +3,7 @@ package com.medimap.doctor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class DoctorService {
@@ -18,7 +19,7 @@ public class DoctorService {
     }
 
 
-    public List<DoctorDTO> getDoctorsByRoomId(Long roomId) {
+    public List<DoctorDTO> getDoctorsByRoomId(UUID roomId) {
         return doctorRepository.findByRoomId(roomId)
                 .stream()
                 .map(DoctorMapper::toDto)

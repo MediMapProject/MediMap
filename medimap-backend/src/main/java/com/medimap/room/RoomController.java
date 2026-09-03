@@ -3,6 +3,7 @@ package com.medimap.room;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/rooms")
@@ -14,7 +15,7 @@ public class RoomController {
 
 
     @GetMapping("/by-floor")
-    public List<RoomDTO> getRoomsByFloorId(@RequestParam Long floorId) {
+    public List<RoomDTO> getRoomsByFloorId(@RequestParam UUID floorId) {
         if(floorId == null) {
             return roomService.getAllRooms();
         }

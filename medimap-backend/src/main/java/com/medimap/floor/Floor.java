@@ -1,15 +1,13 @@
 package com.medimap.floor;
 
 import com.medimap.building.Building;
+import com.medimap.common.BaseEntity;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "floor")
-public class Floor
+public class Floor extends BaseEntity
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "building_id", nullable = false)
@@ -26,7 +24,6 @@ public class Floor
 
     public Floor() {}
 
-    public Long getId() {return id;}
 
     public Building getBuilding() {return building;}
 

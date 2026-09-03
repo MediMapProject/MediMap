@@ -1,8 +1,10 @@
 package com.medimap.search;
 
+import java.util.UUID;
+
 public record SearchDTO(
         String type,
-        Long id,
+        UUID id,
         String title,
         String subtitle
 ) {}

@@ -3,7 +3,7 @@ import api from "./client";
 import type { Room } from "@/shared/types/Room";
 
 export async function getRoomsByFloor(
-    floorId: number,
+    floorId: string,
 ): Promise<Room[]> {
 
     const response = await api.get<Room[]>(
