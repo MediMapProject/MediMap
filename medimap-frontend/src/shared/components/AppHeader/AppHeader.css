@@ -1,28 +1,71 @@
 .header {
-    height: 72px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 
-    background: var(--surface);
+    height: 72px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 var(--space-6);
+    padding: 0 20px;
 
-    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
 
-    box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid #eef2f7;
+
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05);
+}
+
+.header__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header__icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #e8f1ff;
+    color: #2563eb;
 }
 
 .header__logo {
-    font-size: 32px;
+    font-size: 1.6rem;
     font-weight: 700;
-    color: var(--primary);
+    color: #1e293b;
+    letter-spacing: -0.02em;
 }
 
 .header__menu {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     border: none;
+    border-radius: 12px;
+
     background: transparent;
-    font-size: 32px;
+
+    color: #334155;
+
     cursor: pointer;
+
+    transition: background .2s ease;
+}
+
+.header__menu:hover {
+    background: #f1f5f9;
 }
