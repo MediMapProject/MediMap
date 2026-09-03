@@ -1,7 +1,6 @@
 import { Search, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { useDebounce } from "@/shared/hooks/useDebounce";
 import { useSearch } from "@/shared/hooks/useSearch";
 
 import "./SearchModal.css";
@@ -13,18 +12,27 @@ type Props = {
 export default function SearchModal({ onClose }: Props) {
 
     const [input, setInput] = useState("");
+    const [query, setQuery] = useState("");
 
-    const debouncedQuery = useDebounce(input, 500);
-
-    const {
-        results,
-        loading,
-        searchNow,
-    } = useSearch();
+    const { results, loading } = useSearch(query);
 
     useEffect(() => {
-        searchNow(debouncedQuery);
-    }, [debouncedQuery, searchNow]);
+
+        if (input.trim().length < 2) {
+            setQuery("");
+            return;
+        }
+
+        const timer = setTimeout(() => {
+            if (input !== query) {
+                setQuery(input);
+            }
+
+        }, 500);
+
+        return () => clearTimeout(timer);
+
+    }, [input, query]);
 
     return (
         <div className="search-modal-overlay">
@@ -42,7 +50,7 @@ export default function SearchModal({ onClose }: Props) {
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={(e) => {
                             if (e.key === "Enter") {
-                                searchNow(input);
+                                setQuery(input);
                             }
                         }}
                     />

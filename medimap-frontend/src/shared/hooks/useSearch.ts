@@ -1,45 +1,52 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { search } from "../api/searchApi";
 import type { SearchResult } from "../types/SearchResults";
 
-export function useSearch() {
+export function useSearch(query: string) {
 
     const [results, setResults] = useState<SearchResult[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    async function searchNow(query: string) {
+    useEffect(() => {
 
         if (query.trim().length < 2) {
             setResults([]);
+            setError(null);
             return;
         }
 
-        setLoading(true);
+        async function loadResults() {
 
-        try {
+            setLoading(true);
 
-            const data = await search(query.trim());
+            try {
 
-            setResults(data);
-            setError(null);
+                const data = await search(query.trim());
 
-        } catch {
+                setResults(data);
+                setError(null);
 
-            setError("Failed to search.");
+            } catch {
 
-        } finally {
+                setError("Failed to search.");
 
-            setLoading(false);
+            } finally {
+
+                setLoading(false);
+
+            }
 
         }
-    }
+
+        loadResults();
+
+    }, [query]);
 
     return {
         results,
         loading,
         error,
-        searchNow,
     };
 }
