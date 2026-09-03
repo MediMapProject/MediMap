@@ -10,6 +10,7 @@ import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 
 import AppHeader from "@/shared/components/AppHeader/AppHeader";
 import Hero from "@/shared/components/Hero/Hero";
+import SearchModal from "@/shared/components/SearchModal/SearchModal";
 
 import { useHospitals } from "@/shared/hooks/useHospitals";
 import { useBuildings } from "@/shared/hooks/useBuildings";
@@ -122,12 +123,11 @@ export default function Map() {
                 )}
             </section>
 
-            {/* SearchModal va fi adăugat aici în pasul următor */}
-            {/* {searchOpen && (
-                <SearchModal
-                    onClose={() => setSearchOpen(false)}
-                />
-            )} */}
+           {searchOpen && (
+    <SearchModal
+        onClose={() => setSearchOpen(false)}
+    />
+)}
         </main>
     );
 }

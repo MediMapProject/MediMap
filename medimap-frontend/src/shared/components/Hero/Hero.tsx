@@ -1,7 +1,6 @@
 import "./Hero.css";
 
 import HospitalIllustration from "@/assets/images/hospital-illustration.png";
-import SearchBar from "@/pages/Map/components/SearchBar/SearchBar";
 
 export default function Hero() {
     return (
@@ -34,8 +33,6 @@ export default function Hero() {
                     </div>
 
                 </div>
-
-                <SearchBar />
             </div>
 
         </section>
