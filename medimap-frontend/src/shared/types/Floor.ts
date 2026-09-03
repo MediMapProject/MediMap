@@ -1,8 +1,8 @@
 export interface Floor {
-    id: number;
-    floorNumber: number;
+    id: string;
+    floorNumber: string;
     name: string;
-    buildingId: number;
+    buildingId: string;
     buildingName: string;
     mapPath: string;
 }

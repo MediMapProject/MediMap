@@ -3,6 +3,7 @@ package com.medimap.floor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/floors")
@@ -18,7 +19,7 @@ public class FloorController
     }
 
     @GetMapping("/by-building")
-    public List<FloorDTO> getFloorsByBuildingId(@RequestParam Long buildingId)
+    public List<FloorDTO> getFloorsByBuildingId(@RequestParam UUID buildingId)
     {
         return floorService.getFloorsByBuildingId(buildingId);
     }

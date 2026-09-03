@@ -1,7 +1,9 @@
 package com.medimap.hospital;
 
+import java.util.UUID;
+
 public record HospitalDTO(
-        Long id,
+        UUID id,
         String name,
         String address,
         String city,

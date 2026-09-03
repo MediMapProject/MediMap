@@ -1,7 +1,7 @@
 export interface Building {
-    id: number;
+    id: string;
     name: string;
     description: string;
-    hospitalId: number;
+    hospitalId: string;
     hospitalName: string;
 }

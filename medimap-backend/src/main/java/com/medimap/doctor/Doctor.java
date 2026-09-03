@@ -1,16 +1,14 @@
 package com.medimap.doctor;
 
+import com.medimap.common.BaseEntity;
 import com.medimap.department.Department;
 import com.medimap.room.Room;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "doctor")
-public class Doctor
+public class Doctor extends BaseEntity
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "department_id", nullable = false)
@@ -38,7 +36,6 @@ public class Doctor
 
     public Doctor() {}
 
-    public Long getId() {return id;}
 
     public Department getDepartment() {return department;}
 

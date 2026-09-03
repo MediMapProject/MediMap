@@ -3,6 +3,7 @@ package com.medimap.doctor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class DoctorService {
@@ -13,29 +14,15 @@ public class DoctorService {
     List<DoctorDTO> getAllDoctors() {
         return doctorRepository.findAll()
                 .stream()
-                .map(this::getDoctorDTO)
+                .map(DoctorMapper::toDto)
                 .toList();
     }
 
-    private DoctorDTO getDoctorDTO(Doctor doctor) {
-        return new DoctorDTO(
-                doctor.getId(),
-                doctor.getDepartment().getId(),
-                doctor.getDepartment().getName(),
-                doctor.getRoom().getId(),
-                doctor.getRoom().getName(),
-                doctor.getFirstName(),
-                doctor.getLastName(),
-                doctor.getTitle(),
-                doctor.getEmail(),
-                doctor.getPhone()
-        );
-    }
 
-    public List<DoctorDTO> getDoctorsByRoomId(Long roomId) {
+    public List<DoctorDTO> getDoctorsByRoomId(UUID roomId) {
         return doctorRepository.findByRoomId(roomId)
                 .stream()
-                .map(this::getDoctorDTO)
+                .map(DoctorMapper::toDto)
                 .toList();
     }
 }

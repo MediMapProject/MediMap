@@ -1,10 +1,12 @@
 package com.medimap.doctor;
 
+import java.util.UUID;
+
 public record DoctorDTO(
-    Long id,
-    Long departmentId,
+    UUID id,
+    UUID departmentId,
     String departmentName,
-    Long floorId,
+    UUID floorId,
     String floorName,
     String firstName,
     String lastName,

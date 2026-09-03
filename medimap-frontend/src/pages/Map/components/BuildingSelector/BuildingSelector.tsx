@@ -4,8 +4,8 @@ import type { Building } from "@/shared/types/Building";
 
 type BuildingSelectorProps = {
     buildings: Building[];
-    value: number | null;
-    onChange: (buildingId: number) => void;
+    value: string | null;
+    onChange: (buildingId: string) => void;
 };
 
 export default function BuildingSelector({
@@ -23,7 +23,7 @@ export default function BuildingSelector({
                 id="building-select"
                 value={value ?? ""}
                 onChange={(event) =>
-                    onChange(Number(event.target.value))
+                    onChange(event.target.value)
                 }
             >
                 <option value="">

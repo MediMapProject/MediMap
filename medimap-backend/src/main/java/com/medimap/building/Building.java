@@ -1,16 +1,14 @@
 package com.medimap.building;
 
+import com.medimap.common.BaseEntity;
 import com.medimap.hospital.Hospital;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "building")
-public class Building
+public class Building extends BaseEntity
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "hospital_id", nullable = false)
@@ -22,8 +20,6 @@ public class Building
     private String description;
 
     public Building() {}
-
-    public Long getId() {return id;}
 
     public Hospital getHospital() {return hospital;}
 

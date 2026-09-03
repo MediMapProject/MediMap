@@ -1,10 +1,12 @@
 package com.medimap.room;
 
+import java.util.UUID;
+
 public record RoomDTO(
-        Long id,
-        Long floorId,
+        UUID id,
+        UUID floorId,
         String floorName,
-        Long departmentId,
+        UUID departmentId,
         String departmentName,
         String number,
         String name,

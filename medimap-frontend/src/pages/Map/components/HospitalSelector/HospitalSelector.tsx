@@ -6,8 +6,8 @@ import type { Hospital } from "@/shared/types/Hospital";
 
 type HospitalSelectorProps = {
     hospitals: Hospital[];
-    value: number | null;
-    onChange: (hospitalId: number) => void;
+    value: string | null;
+    onChange: (hospitalId: string) => void;
 };
 
 export default function HospitalSelector({

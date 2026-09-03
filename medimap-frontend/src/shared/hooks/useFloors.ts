@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getFloorsByBuilding } from "@/shared/api/floorApi";
 import type { Floor } from "@/shared/types/Floor";
 
-export function useFloors(buildingId: number | null) {
+export function useFloors(buildingId: string| null) {
     const [floors, setFloors] = useState<Floor[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);

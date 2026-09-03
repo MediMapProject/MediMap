@@ -8,6 +8,13 @@ services:
       POSTGRES_USER: medimap
       POSTGRES_PASSWORD: medimap
 
+    command:
+      - postgres
+      - -c
+      - log_connections=on
+      - -c
+      - log_disconnections=on
+
     ports:
       - "5432:5432"
 

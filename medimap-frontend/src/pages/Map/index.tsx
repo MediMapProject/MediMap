@@ -21,13 +21,13 @@ export default function Map() {
     const { hospitals, loading, error } = useHospitals();
 
     const [selectedHospitalId, setSelectedHospitalId] =
-        useState<number | null>(null);
+        useState<string | null>(null);
 
     const [selectedBuildingId, setSelectedBuildingId] =
-        useState<number | null>(null);
+        useState<string | null>(null);
 
     const [selectedFloorId, setSelectedFloorId] =
-        useState<number | null>(null);
+        useState<string | null>(null);
 
     // Va fi folosit pentru SearchModal
     const [searchOpen, setSearchOpen] = useState(false);
