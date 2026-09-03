@@ -12,13 +12,12 @@ public class RoomController {
 
     public RoomController(RoomService roomService) {this.roomService = roomService;}
 
-    @GetMapping
-    public List<RoomDTO> getAllRooms() {
-        return roomService.getAllRooms();
-    }
 
     @GetMapping("/by-floor")
     public List<RoomDTO> getRoomsByFloorId(@RequestParam Long floorId) {
+        if(floorId == null) {
+            return roomService.getAllRooms();
+        }
         return roomService.getRoomsByFloorId(floorId);
     }
 }

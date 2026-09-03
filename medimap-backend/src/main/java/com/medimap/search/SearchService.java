@@ -29,11 +29,6 @@ public class SearchService {
 
     public List<SearchDTO> search(String query)
     {
-        if (query == null || query.isBlank()) {
-            return List.of();
-        }
-
-        query = query.trim();
 
         List<SearchDTO> results = new ArrayList<>();
 
