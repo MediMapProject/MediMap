@@ -1,7 +1,7 @@
-mport "./Hero.css";
- 
+import "./Hero.css";
+
 import HospitalIllustration from "@/assets/images/hospital-illustration.png";
- 
+
 export default function Hero() {
     return (
         <section className="hero">
@@ -18,7 +18,11 @@ export default function Hero() {
                 </p>
             </div>
 
-                </div>
+            <div className="hero__image">
+                <img
+                    src={HospitalIllustration}
+                    alt="Hospital illustration"
+                />
             </div>
         </section>
     );
