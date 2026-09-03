@@ -16,6 +16,12 @@ public class SearchController {
 
     @GetMapping
     public List<SearchDTO> search(@RequestParam String query) {
+
+        query = query.trim();
+
+        if (query == null || query.isBlank()) {
+            return List.of();
+        }
         return searchService.search(query);
     }
 }
