@@ -1,6 +1,6 @@
 import "./Hero.css";
 
-import HospitalIllustration from "@/assets/images/hospital-illustration.png";
+import HospitalIllustration from "@/assets/images/hospital-illustration.svg";
 
 export default function Hero() {
     return (

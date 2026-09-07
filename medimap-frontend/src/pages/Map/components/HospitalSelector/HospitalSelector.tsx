@@ -17,6 +17,7 @@ export default function HospitalSelector({
 }: HospitalSelectorProps) {
     return (
         <SelectorCard
+            label=""
             placeholder="Select a hospital"
             icon={Building2}
             value={value}
