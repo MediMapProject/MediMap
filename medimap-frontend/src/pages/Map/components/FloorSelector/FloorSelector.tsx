@@ -17,7 +17,6 @@ export default function FloorSelector({
 }: FloorSelectorProps) {
     return (
         <SelectorCard
-            label="Floor"
             placeholder="Select a floor"
             icon={Layers3}
             value={value}

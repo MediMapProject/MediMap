@@ -17,7 +17,6 @@ export default function BuildingSelector({
 }: BuildingSelectorProps) {
     return (
         <SelectorCard
-            label="Building"
             placeholder="Select a building"
             icon={Building2}
             value={value}
