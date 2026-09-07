@@ -2,7 +2,7 @@ import { Menu, Search } from "lucide-react";
 
 import "./AppHeader.css";
 
-import logo from "@/assets/images/logo.png";
+import logo from "@/assets/images/logo.svg";
 
 type AppHeaderProps = {
     onSearchClick: () => void;
