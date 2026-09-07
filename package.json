@@ -1,0 +1,24 @@
+{
+  "name": "medimap",
+  "private": true,
+  "version": "1.0.0",
+  "description": "MediMap is an interactive hospital navigation platform designed to help patients, visitors, and healthcare professionals easily explore hospital buildings.",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "backend": "docker compose up -d",
+    "backend:build": "docker compose up -d --build",
+    "frontend": "cd medimap-frontend && npm run dev",
+    "dev": "npm run backend && npm run frontend",
+    "down": "docker compose down"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MediMapProject/MediMap.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/MediMapProject/MediMap/issues"
+  },
+  "homepage": "https://github.com/MediMapProject/MediMap#readme"
+}

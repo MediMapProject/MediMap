@@ -1,4 +1,5 @@
 services:
+
   postgres:
     image: postgres:17
     container_name: medimap-postgres
@@ -11,9 +12,9 @@ services:
     command:
       - postgres
       - -c
-      - log_connections=on
+      - log_connections=off
       - -c
-      - log_disconnections=on
+      - log_disconnections=off
 
     ports:
       - "5432:5432"
@@ -21,5 +22,36 @@ services:
     volumes:
       - medimap_postgres_data:/var/lib/postgresql/data
 
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U medimap"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./medimap-backend
+      dockerfile: Dockerfile.dev
+
+    container_name: medimap-backend
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/medimap
+      SPRING_DATASOURCE_USERNAME: medimap
+      SPRING_DATASOURCE_PASSWORD: medimap
+      FRONTEND_URL: http://localhost:5173
+
+    ports:
+      - "8080:8080"
+
+    volumes:
+      - ./medimap-backend:/app
+      - maven-cache:/root/.m2
+
 volumes:
   medimap_postgres_data:
+  maven-cache:
