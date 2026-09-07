@@ -3,7 +3,6 @@ import "./SelectorCard.css";
 import type { LucideIcon } from "lucide-react";
 
 type SelectorCardProps = {
-    label: string;
     icon: LucideIcon;
 
     value: string | null;
@@ -12,14 +11,13 @@ type SelectorCardProps = {
 
     options: {
         id: string;
-        label: string;
+
     }[];
 
     placeholder: string;
 };
 
 export default function SelectorCard({
-    label,
     icon: Icon,
     value,
     onChange,
@@ -33,7 +31,7 @@ export default function SelectorCard({
 
             <label className="selector-card__label">
 
-                {label}
+
 
             </label>
 
@@ -61,7 +59,6 @@ export default function SelectorCard({
                             key={option.id}
                             value={option.id}
                         >
-                            {option.label}
                         </option>
 
                     ))}

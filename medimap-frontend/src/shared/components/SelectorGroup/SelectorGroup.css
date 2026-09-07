@@ -1,0 +1,20 @@
+.selector-group{
+
+    background:#FFFFFF;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    border:1px solid #E2E8F0;
+
+    box-shadow:
+        0 10px 30px rgba(15,23,42,.06);
+
+    margin-bottom:32px;
+}
+
+.selector-group .selector-card:last-child .selector-card__input{
+
+    border-bottom:none;
+}
