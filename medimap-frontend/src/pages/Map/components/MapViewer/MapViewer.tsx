@@ -9,7 +9,7 @@ export default function MapViewer({ mapPath }: MapViewerProps) {
     const [svgContent, setSvgContent] = useState("");
 
     useEffect(() => {
-        // Ștergem harta veche de fiecare dată când se schimbă mapPath
+  
         setSvgContent("");
 
         if (!mapPath) {
