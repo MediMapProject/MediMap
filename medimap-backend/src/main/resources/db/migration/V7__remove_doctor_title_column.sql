@@ -1,0 +1,6 @@
+ALTER TABLE doctor
+ALTER COLUMN title_id
+SET NOT NULL;
+
+ALTER TABLE doctor
+DROP COLUMN title;
