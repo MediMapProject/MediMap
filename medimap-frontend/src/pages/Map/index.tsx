@@ -11,6 +11,7 @@ import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import AppHeader from "@/shared/components/AppHeader/AppHeader";
 import Hero from "@/shared/components/Hero/Hero";
 import SearchModal from "@/shared/components/SearchModal/SearchModal";  
+import MapCard from "@/shared/components/MapCard/MapCard";
  
 import { useHospitals } from "@/shared/hooks/useHospitals";
 import { useBuildings } from "@/shared/hooks/useBuildings";
@@ -132,25 +133,14 @@ export default function Map() {
                 />
             </section>
  
-         <section className="map-section">
-
-    {selectedHospitalId && selectedFloor ? (
-        <MapViewer
-            key={selectedFloor.id}
-            mapPath={selectedFloor.mapPath}
-        />
-    ) : (
-        <div className="empty-map">
-            <h2>Selectează un spital</h2>
-
-            <p>
-                Alege un spital pentru a încărca automat
-                clădirea, etajul și harta.
-            </p>
-        </div>
-    )}
-
-</section>
+            <MapCard title={selectedFloor?.name ?? "Map"}>
+                {selectedFloor && (
+                    <MapViewer
+                        key={selectedFloor.id}
+                        mapPath={selectedFloor.mapPath}
+                    />
+                )}
+            </MapCard>
            {searchOpen && (
     <SearchModal
         onClose={() => setSearchOpen(false)}
