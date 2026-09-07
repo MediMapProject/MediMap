@@ -1,11 +1,13 @@
-import "./FloorSelector.css";
+import { Layers3 } from "lucide-react";
+
+import SelectorCard from "@/shared/components/SelectorCard/SelectorCard";
 
 import type { Floor } from "@/shared/types/Floor";
 
 type FloorSelectorProps = {
     floors: Floor[];
     value: string | null;
-    onChange: (floorId: string) => void;
+    onChange: (floorId: string | null) => void;
 };
 
 export default function FloorSelector({
@@ -14,31 +16,16 @@ export default function FloorSelector({
     onChange,
 }: FloorSelectorProps) {
     return (
-        <div className="floor-selector">
-            <label htmlFor="floor-select">
-                Floor
-            </label>
-
-            <select
-                id="floor-select"
-                value={value ?? ""}
-                onChange={(event) =>
-                    onChange(event.target.value)
-                }
-            >
-                <option value="">
-                    Select a floor
-                </option>
-
-                {floors.map((floor) => (
-                    <option
-                        key={floor.id}
-                        value={floor.id}
-                    >
-                        {floor.name}
-                    </option>
-                ))}
-            </select>
-        </div>
+        <SelectorCard
+            label="Floor"
+            placeholder="Select a floor"
+            icon={Layers3}
+            value={value}
+            onChange={onChange}
+            options={floors.map((floor) => ({
+                id: floor.id,
+                label: floor.name,
+            }))}
+        />
     );
 }

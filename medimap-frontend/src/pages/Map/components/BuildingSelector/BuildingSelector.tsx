@@ -1,11 +1,13 @@
-import "./BuildingSelector.css";
+import { Building2 } from "lucide-react";
+
+import SelectorCard from "@/shared/components/SelectorCard/SelectorCard";
 
 import type { Building } from "@/shared/types/Building";
 
 type BuildingSelectorProps = {
     buildings: Building[];
     value: string | null;
-    onChange: (buildingId: string) => void;
+    onChange: (buildingId: string | null) => void;
 };
 
 export default function BuildingSelector({
@@ -14,31 +16,16 @@ export default function BuildingSelector({
     onChange,
 }: BuildingSelectorProps) {
     return (
-        <div className="building-selector">
-            <label htmlFor="building-select">
-                Building
-            </label>
-
-            <select
-                id="building-select"
-                value={value ?? ""}
-                onChange={(event) =>
-                    onChange(event.target.value)
-                }
-            >
-                <option value="">
-                    Select a building
-                </option>
-
-                {buildings.map((building) => (
-                    <option
-                        key={building.id}
-                        value={building.id}
-                    >
-                        {building.name}
-                    </option>
-                ))}
-            </select>
-        </div>
+        <SelectorCard
+            label="Building"
+            placeholder="Select a building"
+            icon={Building2}
+            value={value}
+            onChange={onChange}
+            options={buildings.map((building) => ({
+                id: building.id,
+                label: building.name,
+            }))}
+        />
     );
 }
