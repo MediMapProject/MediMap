@@ -2,6 +2,7 @@ package com.medimap.doctor;
 
 import com.medimap.common.BaseEntity;
 import com.medimap.department.Department;
+import com.medimap.lookup.Lookup;
 import com.medimap.room.Room;
 import jakarta.persistence.*;
 
@@ -15,7 +16,7 @@ public class Doctor extends BaseEntity
     private Department department;
 
     @ManyToOne
-    @JoinColumn(name = "room_id", nullable = false)
+    @JoinColumn(name = "room_id")
     private Room room;
 
     @Column(nullable = false)
@@ -25,8 +26,9 @@ public class Doctor extends BaseEntity
     private String lastName;
 
 
-    @Column(nullable = false)
-    private String title;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "title_id",nullable = false)
+    private Lookup title;
 
     @Column(nullable = false)
     private String email;
@@ -45,7 +47,7 @@ public class Doctor extends BaseEntity
 
     public String getLastName() {return lastName;}
 
-    public String getTitle() {return title;}
+    public Lookup getTitle() {return title;}
 
     public String getEmail() {return email;}
 
@@ -59,7 +61,7 @@ public class Doctor extends BaseEntity
 
     public void setLastName(String lastName) {this.lastName = lastName;}
 
-    public void setTitle(String title) {this.title = title;}
+    public void setTitle(Lookup title) {this.title = title;}
 
     public void setEmail(String email) {this.email = email;}
 
