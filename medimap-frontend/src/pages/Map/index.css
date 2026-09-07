@@ -22,3 +22,52 @@
 
     padding: 0 16px 24px;
 }
+
+.empty-map {
+
+    min-height: 520px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background: linear-gradient(
+        180deg,
+        #ffffff,
+        #f8fbff
+    );
+
+    border: 2px dashed #dbeafe;
+
+    border-radius: 28px;
+
+    padding: 48px;
+
+    box-shadow: 0 10px 30px rgba(15,23,42,.05);
+}
+
+.empty-map h2 {
+
+    font-size: 34px;
+
+    color: #0f172a;
+
+    margin-bottom: 16px;
+}
+
+.empty-map p {
+
+    max-width: 420px;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    color: #64748b;
+}

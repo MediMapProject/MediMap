@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
  
 import "./index.css";
  
@@ -37,12 +37,30 @@ export default function Map() {
         loading: buildingsLoading,
         error: buildingsError,
     } = useBuildings(selectedHospitalId);
+
+    useEffect(() => {
+    if (
+        buildings.length > 0 &&
+        selectedBuildingId === null
+    ) {
+        setSelectedBuildingId(buildings[0].id);
+    }
+}, [buildings, selectedBuildingId]);
  
     const {
         floors,
         loading: floorsLoading,
         error: floorsError,
     } = useFloors(selectedBuildingId);
+
+    useEffect(() => {
+    if (
+        floors.length > 0 &&
+        selectedFloorId === null
+    ) {
+        setSelectedFloorId(floors[0].id);
+    }
+}, [floors, selectedFloorId]);
  
     const {
         rooms,
@@ -114,15 +132,25 @@ export default function Map() {
                 />
             </section>
  
-            <section className="map-section">
-                {selectedFloor && (
-                    <MapViewer
-                        key={selectedFloor.id}
-                        mapPath={selectedFloor.mapPath}
-                    />
-                )}
-            </section>
- 
+         <section className="map-section">
+
+    {selectedHospitalId && selectedFloor ? (
+        <MapViewer
+            key={selectedFloor.id}
+            mapPath={selectedFloor.mapPath}
+        />
+    ) : (
+        <div className="empty-map">
+            <h2>Selectează un spital</h2>
+
+            <p>
+                Alege un spital pentru a încărca automat
+                clădirea, etajul și harta.
+            </p>
+        </div>
+    )}
+
+</section>
            {searchOpen && (
     <SearchModal
         onClose={() => setSearchOpen(false)}

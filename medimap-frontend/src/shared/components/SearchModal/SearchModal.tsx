@@ -1,5 +1,5 @@
 import { Search, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useSearch } from "@/shared/hooks/useSearch";
 
@@ -9,30 +9,12 @@ type Props = {
     onClose: () => void;
 };
 
-export default function SearchModal({ onClose }: Props) {
-
-    const [input, setInput] = useState("");
+export default function SearchModal({
+    onClose,
+}: Props) {
     const [query, setQuery] = useState("");
 
     const { results, loading } = useSearch(query);
-
-    useEffect(() => {
-
-        if (input.trim().length < 2) {
-            setQuery("");
-            return;
-        }
-
-        const timer = setTimeout(() => {
-            if (input !== query) {
-                setQuery(input);
-            }
-
-        }, 500);
-
-        return () => clearTimeout(timer);
-
-    }, [input, query]);
 
     return (
         <div className="search-modal-overlay">
@@ -46,13 +28,8 @@ export default function SearchModal({ onClose }: Props) {
                         autoFocus
                         type="text"
                         placeholder="Search doctor, room, department..."
-                        value={input}
-                        onChange={(e) => setInput(e.target.value)}
-                        onKeyDown={(e) => {
-                            if (e.key === "Enter") {
-                                setQuery(input);
-                            }
-                        }}
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
                     />
 
                     <button onClick={onClose}>
@@ -90,7 +67,7 @@ export default function SearchModal({ onClose }: Props) {
                         ))}
 
                     {!loading &&
-                        input.trim().length >= 2 &&
+                        query &&
                         results.length === 0 && (
                             <div className="search-empty">
                                 No results found

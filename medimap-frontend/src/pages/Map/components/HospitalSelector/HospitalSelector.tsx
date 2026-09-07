@@ -1,61 +1,31 @@
 import { Building2 } from "lucide-react";
- 
-import "./HospitalSelector.css";
- 
+
+import SelectorCard from "@/shared/components/SelectorCard/SelectorCard";
+
 import type { Hospital } from "@/shared/types/Hospital";
- 
+
 type HospitalSelectorProps = {
     hospitals: Hospital[];
     value: string | null;
-    onChange: (hospitalId: string) => void;
+    onChange: (hospitalId: string | null) => void;
 };
- 
+
 export default function HospitalSelector({
     hospitals,
     value,
     onChange,
 }: HospitalSelectorProps) {
     return (
-        <div className="hospital-selector">
- 
-            <label
-                htmlFor="hospital-select"
-                className="hospital-selector__label"
-            >
-                Hospital
-            </label>
- 
-            <div className="hospital-selector__card">
- 
-                <Building2
-                    size={22}
-                    className="hospital-selector__icon"
-                />
- 
-                <select
-                    id="hospital-select"
-                    className="hospital-selector__select"
-                    value={value ?? ""}
-                    onChange={(event) =>
-                        onChange((event.target.value))
-                    }
-                >
-                    <option value="">
-                        Select a hospital
-                    </option>
- 
-                    {hospitals.map((hospital) => (
-                        <option
-                            key={hospital.id}
-                            value={hospital.id}
-                        >
-                            {hospital.name}
-                        </option>
-                    ))}
-                </select>
- 
-            </div>
- 
-        </div>
+        <SelectorCard
+            label="Hospital"
+            placeholder="Select a hospital"
+            icon={Building2}
+            value={value}
+            onChange={onChange}
+            options={hospitals.map((hospital) => ({
+                id: hospital.id,
+                label: hospital.name,
+            }))}
+        />
     );
 }
