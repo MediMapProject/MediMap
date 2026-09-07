@@ -1,0 +1,57 @@
+.map-card{
+
+    background:#FFFFFF;
+
+    border-radius:24px;
+
+    padding:24px;
+
+    box-shadow:
+        0 10px 30px rgba(15,23,42,.06);
+
+    margin-top:32px;
+}
+
+.map-card__header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+}
+
+.map-card__header h2{
+
+    font-size:24px;
+
+    color:#0F172A;
+}
+
+.map-card__button{
+
+    border:none;
+
+    background:#EFF6FF;
+
+    color:#2563EB;
+
+    padding:10px 16px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+}
+
+.map-card__content{
+
+    min-height:500px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
