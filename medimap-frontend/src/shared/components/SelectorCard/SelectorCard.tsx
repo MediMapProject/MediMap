@@ -1,7 +1,8 @@
 import "./SelectorCard.css";
 
 import type { LucideIcon } from "lucide-react";
-import { ChevronDown } from "lucide-react";
+
+import CustomSelect from "@/shared/components/CustomSelect/CustomSelect";
 
 type SelectorCardProps = {
     label: string;
@@ -31,10 +32,6 @@ export default function SelectorCard({
     return (
         <div className="selector-card">
 
-            <label className="selector-card__label">
-                {label}
-            </label>
-
             <div className="selector-card__input">
 
                 <Icon
@@ -42,30 +39,14 @@ export default function SelectorCard({
                     className="selector-card__icon"
                 />
 
-                <select
-                    className="selector-card__select"
-                    value={value ?? ""}
-                    onChange={(event) =>
-                        onChange(event.target.value || null)
-                    }
-                >
-                    <option value="">
-                        {placeholder}
-                    </option>
+                <CustomSelect
+                    label={label}
+                    value={value}
+                    placeholder={placeholder}
+                    options={options}
+                    onChange={onChange}
+                />
 
-                    {options.map((option) => (
-                        <option
-                            key={option.id}
-                            value={option.id}
-                        >
-                            {option.label}
-                        </option>
-                    ))}
-                </select>
-<ChevronDown
-    size={18}
-    className="selector-card__chevron"
-/>
             </div>
 
         </div>
