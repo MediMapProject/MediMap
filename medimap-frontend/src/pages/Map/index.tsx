@@ -12,6 +12,7 @@ import AppHeader from "@/shared/components/AppHeader/AppHeader";
 import Hero from "@/shared/components/Hero/Hero";
 import SearchModal from "@/shared/components/SearchModal/SearchModal";
 import MapCard from "@/shared/components/MapCard/MapCard";
+import EmptyMapState from "@/shared/components/EmptyMapState/EmptyMapState";
 
 import { useHospitals } from "@/shared/hooks/useHospitals";
 import { useBuildings } from "@/shared/hooks/useBuildings";
@@ -160,16 +161,25 @@ export default function Map() {
 
             </section>
 
-            <MapCard title={selectedFloor?.name ?? "Map"}>
+            <MapCard
+    title={selectedFloor?.name ?? "Interactive Map"}
+>
 
-                {selectedFloor && (
-                    <MapViewer
-                        key={selectedFloor.id}
-                        mapPath={selectedFloor.mapPath}
-                    />
-                )}
+    {selectedFloor ? (
 
-            </MapCard>
+        <MapViewer
+            key={selectedFloor.id}
+            mapPath={selectedFloor.mapPath}
+        />
+
+    ) : (
+
+        <EmptyMapState />
+
+    )}
+
+</MapCard>
+
 
             {searchOpen && (
                 <SearchModal
