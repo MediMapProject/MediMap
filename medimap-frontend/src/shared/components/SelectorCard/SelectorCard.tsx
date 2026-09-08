@@ -1,6 +1,7 @@
 import "./SelectorCard.css";
 
 import type { LucideIcon } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 type SelectorCardProps = {
     label: string;
@@ -61,7 +62,10 @@ export default function SelectorCard({
                         </option>
                     ))}
                 </select>
-
+<ChevronDown
+    size={18}
+    className="selector-card__chevron"
+/>
             </div>
 
         </div>

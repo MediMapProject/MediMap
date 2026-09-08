@@ -18,26 +18,41 @@
     color:#475569;
 }
 
-.selector-card__input{
+.selector-card__input {
 
-    height:68px;
+    position: relative;
 
-    background:#FFFFFF;
+    height: 68px;
 
-    border:1px solid #E2E8F0;
+    display: flex;
 
-    border-radius:18px;
+    align-items: center;
 
-    display:flex;
+    padding: 0 18px;
 
-    align-items:center;
+    background: #FFFFFF;
 
-    padding:0 18px;
+    border: 1px solid #E2E8F0;
 
-    transition:.25s;
+    border-radius: 18px;
 
-    box-shadow:
-        0 8px 24px rgba(15,23,42,.05);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, .05);
+
+    transition: .25s;
+}
+
+.selector-card__input:hover {
+
+    border-color: #CBD5E1;
+
+    box-shadow: 0 10px 28px rgba(15,23,42,.08);
+}
+
+.selector-card__input:focus-within {
+
+    border-color: #2563EB;
+
+    box-shadow: 0 0 0 4px rgba(37,99,235,.10);
 }
 
 .selector-card__input:hover{
@@ -58,17 +73,49 @@
     margin-right:16px;
 }
 
-.selector-card select{
+.selector-card__select {
 
-    flex:1;
+    flex: 1;
 
-    border:none;
+    width: 100%;
 
-    outline:none;
+    border: none;
 
-    background:transparent;
+    outline: none;
 
-    cursor:pointer;
+    background: transparent;
 
-    font-size:16px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    color: #0F172A;
+
+    padding-right: 28px;
+}
+
+.selector-card__select option {
+
+    color: #0F172A;
+
+    background: #FFFFFF;
+
+    font-size: 16px;
+}
+
+.selector-card__chevron {
+
+    color: #64748B;
+
+    flex-shrink: 0;
+
+    margin-left: 12px;
+
+    pointer-events: none;
 }
