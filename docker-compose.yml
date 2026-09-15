@@ -40,10 +40,10 @@ services:
         condition: service_healthy
 
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/medimap
-      SPRING_DATASOURCE_USERNAME: medimap
-      SPRING_DATASOURCE_PASSWORD: medimap
-      FRONTEND_URL: http://localhost:5173
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+      FRONTEND_URL: ${FRONTEND_URL}
 
     ports:
       - "8080:8080"
